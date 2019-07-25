@@ -1,0 +1,17 @@
+PREDEF:
+  - preface.re
+
+CHAPS:
+  - yoshikawa-aws-cost.re
+  - minegishi-AWSCertification.re
+  - gayagaya.re
+  - minegishi-AWSCertification2.re
+  - sato-aws.re
+  - shiomi-cognito.re
+  - shiomi-security.re
+  - iijima-amplify.re
+
+APPENDIX:
+
+POSTDEF:
+  - contributors.re
