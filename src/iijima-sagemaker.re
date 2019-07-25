@@ -1,19 +1,20 @@
-# Amazon SageMakerとは
+= AWS SageMaker入門
+== Amazon SageMakerとは
 AWSで提供されている機械学習のマネージドサービスです。機械学習やディープラーニングを開発する上で面倒な問題の1つにインフラ環境の用意があります。それを開発者がやらなくても良いサービスが近年増えてまいりました。有名なのがColaboratoryというGoogleのサービスです。
 Amazon SageMakerもインフラ環境の構築の必要はありません。
 
-# 特徴
+== 特徴
 
-## Amazon SageMakerのメリット
+=== Amazon SageMakerのメリット
 
-### 開発環境の構築がすぐにできる
+=== 開発環境の構築がすぐにできる
 
-### 必要な時だけGPU環境が作成される
+=== 必要な時だけGPU環境が作成される
 
-### AWSの各種サービスと連携しやすい
+=== AWSの各種サービスと連携しやすい
 例えばデータセットの保管などにAmazon S3利用する場合も
 
-### 推論用APIの自動構築
+=== 推論用APIの自動構築
 学習させたモデルは
 
 * 開発・学習・推論好きなところだけを導入できる
@@ -25,36 +26,36 @@ Amazon SageMakerもインフラ環境の構築の必要はありません。
 * 再現性
 
 
-# Amazon SageMakerを始める
-///つらつらと5ページくらい予定
+== Amazon SageMakerを始める
+つらつらと5ページくらい予定
 
-## 開発
+=== 開発
 
-## 学習
+=== 学習
 
-## 推論
+=== 推論
 
 ----------ここまでが第１弾----------
-# Raspberry Piに組み込むには
+== Raspberry Piに組み込むには
 Amazon SageMaker Neoを利用してIoTデバイスに最適化された推論モデルにする。
 
 * AWS IoT Greengrassを使用する
 * 学習モデルを手動で組み込む
 
-# Amazon SageMaker Neoとは
+== Amazon SageMaker Neoとは
 
-## AWS IoT Greengrassを使ってデプロイする
+=== AWS IoT Greengrassを使ってデプロイする
 
 ----------ここまでが第２弾----------
 
-# Amazon SageMaker の活用事例
+== Amazon SageMaker の活用事例
 そんなない。
 
-# Amazon SageMaker のその他サービス
+== Amazon SageMaker のその他サービス
 Amazon SageMaker Ground Truthとか紹介
 
 ----------⬆︎書かなくていいけど必要があれば書く----------
 
-# まとめ
+== まとめ
 
-# サンプルコードのダウンロード先について
+== サンプルコードのダウンロード先について
