@@ -28,8 +28,8 @@
  2. そのディレクトリに移動します。
  3. 以下の内容でdocker-compose.ymlというファイルを作成します。
 
-====[column]
-
+//list[viewer_docker-compose][docker-compose.yml]{
+{
 version: '3.3'
  
 services:
@@ -63,7 +63,7 @@ services:
  
 volumes:
    db_data:
-
-====[/column]
+}
+//}
 
 
