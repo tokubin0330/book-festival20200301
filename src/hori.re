@@ -27,6 +27,14 @@
  1. 空のプロジェクトディレクトリを作成します。
  2. そのディレクトリに移動します。
  3. 以下の内容でdocker-compose.ymlというファイルを作成します。
+ 4. プロジェクトディレクトリで、次のコマンドを実行します。
+    docker-compose up -d
+ * この時点でWordPressはlocalhostでアクセス可能になるでしょう。
+ * localhost/wp-adminに移動してWordPressの設定を開始します。
+ * 注：dockerコンテナーをシャットダウンするには
+    docker-compose down --volumes 
+    を実行してください。
+ 5. これで、Webサイトを変更する準備が整いました。
 
 //list[viewer_docker-compose][docker-compose.yml]{
 {
@@ -66,4 +74,14 @@ volumes:
 }
 //}
 
+=== 静的WordPressをダウンロードしてAWS S3にデプロイする
+WordPressサイトをホスティングすることは安全ではなく、費用もかかります。
+静的にすることはこれらの欠点を最適化するための素晴らしい方法です、そしてそれをS3でホストすることはさらにコストを削減し、よりきめ細かいセキュリティ設定を可能にします。
+
+以下の手順では、WordPressサイトから静的ファイルを生成し、それらをカスタムドメイン用に新しく構成されたAWS S3バケットでホストする方法について説明します。
+
+ 1. 「プラグイン」 > 「新規追加」 > wp2staticを検索 >「インストール」 >「有効化」の順にクリックします。プラグインが有効になったら、サイドパネルのwp2staticに移動してDeploy static websiteタブを選択します。
+ 2. タブの下にWhere will you host the optimized version of your site?のところにZIPアーカイブを選択します。次に保存をクリックします。
+ 3. Destination URLのところにS3に紐ついてるDomain名を入れます。
+ 4. Start static site exportを押すとzipで静的ファイルのダウンロードできます。
 
