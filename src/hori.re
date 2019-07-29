@@ -91,3 +91,36 @@ WordPressサイトをホスティングすることは安全ではなく、費�
  2. 次に、バケットポリシーを作成する必要があります。AWSにはこの便利なポリシージェネレータがあります。
  ジェネレータを使用したくない場合は、AWSのドキュメントにもかなり良い例があります。
 
+//list[viewer_generator][generator_example]{
+
+ Type of policy:：S3 Bucket Policy
+ Effect: Allow
+ Principal: *
+
+ AWSサービス：Amazon S3（これはポリシーの種類に応じて自動的に設定されます）
+ Actions：GetObjectのみ
+
+ AmazonResourceName（ARN）：これはドメイン名に依存しますが、同じフォーマットになります。例えば：
+ arn：aws：s3 :::showcase-tv.com/*
+
+//}
+
+ 3. パケットポリシー
+
+//list[viewer_packetpolicy][packetpolicy]{
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPublicReadAccess",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::showcase-tv.com/*"
+        }
+    ]
+}
+
+//}
+
