@@ -92,6 +92,10 @@ WordPressサイトをホスティングすることは安全ではなく、費�
 以下の手順では、WordPressサイトから静的ファイルを生成し、それらをカスタムドメイン用に新しく構成されたAWS S3バケットでホストする方法について説明します。
 
  1. 「プラグイン」 > 「新規追加」 > wp2staticを検索 >「インストール」 >「有効化」の順にクリックします。プラグインが有効になったら、サイドパネルのwp2staticに移動してDeploy static websiteタブを選択します。
+ 
+//image[wp2static][wp2staticプラグイン][scale=1.0]{
+//}
+
  2. タブの下にWhere will you host the optimized version of your site?のところにZIPアーカイブを選択します。次に保存をクリックします。
  3. Destination URLのところにS3に紐ついてるDomain名を入れます。
  4. Start static site exportを押すとzipで静的ファイルのダウンロードできます。
