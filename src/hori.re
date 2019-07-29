@@ -102,6 +102,9 @@ WordPressサイトをホスティングすることは安全ではなく、費�
  2. 次に、バケットポリシーを作成する必要があります。AWSにはこの便利なポリシージェネレータがあります。
  ジェネレータを使用したくない場合は、AWSのドキュメントにもかなり良い例があります。
  3. パケットポリシーを以下のように設定してください
+ 4. 安全を期すために、すべてのGETリクエストがドメインにアクセスすることを許可する1つのルールを持つCORS構成を追加することをお勧めします。この場合はhttps://showcase-tv.comです。
+ 5. S3のバケットのページからプロパティのページへ移動してホスティング機能を有効にします。
+ 6. wordpressからダウンロードしたWebサイトファイルをs3 bucketにアップロードします。
 
 //list[viewer_generator][AWS Policy Generator]{
 
@@ -133,5 +136,22 @@ WordPressサイトをホスティングすることは安全ではなく、費�
 }
 
 //}
+
+//list[viewer_xml][XMLの例]{
+{    
+  <?xml version="1.0" encoding="UTF-8"?>
+  <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <CORSRule>
+    <AllowedOrigin>https://showcase-tv.com</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedHeader>*</AllowedHeader>
+  </CORSRule>
+  </CORSConfiguration>
+
+}
+
+//}
+
+
 
 == まとめ
