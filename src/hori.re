@@ -93,10 +93,10 @@ WordPressサイトをホスティングすることは安全ではなく、費�
  3. Destination URLのところにS3に紐ついてるDomain名を入れます。
  4. Start static site exportを押すとzipで静的ファイルのダウンロードできます。
 
-//image[wp2static][wp2staticプラグイン][scale=1.0]{
+//image[wp2static][wp2staticプラグイン][scale=1.2]{
 //}
 
-//image[static_export][static export][scale=1.0]{
+//image[static_export][static export][scale=1.2]{
 //}
  
 
@@ -127,14 +127,14 @@ WordPressサイトをホスティングすることは安全ではなく、費�
 
 //}
 
-//image[04_bucket_policy][バケットポリシー][scale=1.0]{
+//image[04_bucket_policy][バケットポリシー][scale=1.2]{
 //}
 
 
-//image[03_staticweb_hosting][ホスティングの設定][scale=1.0]{
+//image[03_staticweb_hosting][ホスティングの設定][scale=1.2]{
 //}
 
-//image[05_CORS_setting][CORSの設定][scale=1.0]{
+//image[05_CORS_setting][CORSの設定][scale=1.2]{
 //}
 
 
@@ -151,7 +151,7 @@ http://janasahayog.com
 
 静的化を行なったサイトを15日間の期間でS3の運用費を測定したところ以下のようになりました。
 
-//image[S3_price][S3料金][scale=1.0]{
+//image[S3_price][S3料金][scale=1.2]{
 //}
 
 === ec2・レンタルサーバーとの比較
@@ -163,10 +163,7 @@ http://janasahayog.com
 type 料金	monthly
 ---------------------------------
 ec2_t2.micro	$0.0152 /1 時間	$10.944
-S3 .	$0.00
-
-ステートレスなため戻りの@<br>{}トラフィックも明示的に許可設定が必要	ステートフルなため@<br>{}戻りのトラフィックは考慮しなくてOK
-設定の順番通りにルールが適用され@<br>{}ルールに適合したらそれ以上適用されない	すべてのルールが適用される
+S3  	$0.00
 //}
 
 また、私が良く使っている某G社のレンタルサーバーと比較してみると以下のような結果になります。
