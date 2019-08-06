@@ -113,7 +113,6 @@ WordPressサイトをホスティングすることは安全ではなく、費�
 //image[02_bucket_name][バケットの作成][scale=1.0]{
 //}
 
-@<br>{}
 //list[viewer_generator][AWS Policy Generator]{
 
  Type of policy:：S3 Bucket Policy
