@@ -44,8 +44,6 @@
     を実行してください。
  5. これで、Webサイトを変更する準備が整いました。
 
-@<br>{}
-@<br>{}
 //list[viewer_docker-compose][docker-compose.yml]{
 {
 version: '3.3'
@@ -112,7 +110,7 @@ WordPressサイトをホスティングすることは安全ではなく、費�
  5. S3のバケットのページからプロパティのページへ移動してホスティング機能を有効にします。
  6. wordpressからダウンロードしたWebサイトファイルをs3 bucketにアップロードします。
 
-//image[02_bucket_name][バケットの作成][scale=1.2]{
+//image[02_bucket_name][バケットの作成][scale=1.0]{
 //}
 
 //list[viewer_generator][AWS Policy Generator]{
@@ -129,14 +127,14 @@ WordPressサイトをホスティングすることは安全ではなく、費�
 
 //}
 
-//image[04_bucket_policy][バケットポリシー][scale=1.2]{
+//image[04_bucket_policy][バケットポリシー][scale=1.0]{
 //}
 
 
-//image[03_staticweb_hosting][ホスティングの設定][scale=1.2]{
+//image[03_staticweb_hosting][ホスティングの設定][scale=1.0]{
 //}
 
-//image[05_CORS_setting][CORSの設定][scale=1.2]{
+//image[05_CORS_setting][CORSの設定][scale=1.0]{
 //}
 
 
