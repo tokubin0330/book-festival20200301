@@ -7,11 +7,9 @@
 ここではなるべくそういった言葉の齟齬をなるべくなくすために CI/CD が取り扱う範囲を定義します。
 
  CI/CD は英語では「Continuous Integration/Continuous Delevary」日本語に訳すと「継続的インテグレーション/継続的デリバリー」といいます。
-　ここで 「CD にデプロイは入らないの？」と疑問に思った方のために RedHat #@# 脚注参照 
-が定義する CI/CD を例にここでしっかりと言葉の定義をしていきます。
+　ここで 「CD にデプロイは入らないの？」と疑問に思った方のために RedHat が定義する CI/CD を参考@<fn>{redhat}にここでしっかりと言葉の定義をしていきます。
 
-#@# 脚注
-https://www.redhat.com/ja/topics/devops/what-is-ci-cd#
+//footnote[redhat][CI/CD とは　https://www.redhat.com/ja/topics/devops/what-is-ci-cd#]
 
 === 継続的インテグレーション（Continuous Integration）
 　継続的インテグレーション（以下 CI と呼ぶ）は主に開発メンバーのための開発プロセスの自動化を意味します。
