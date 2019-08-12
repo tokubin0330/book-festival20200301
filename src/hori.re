@@ -39,13 +39,24 @@
  2. そのディレクトリに移動します。
  3. 以下の内容でdocker-compose.ymlというファイルを作成します。
  4. プロジェクトディレクトリで、次のコマンドを実行します。
+
+//list[docker-compose][docker-compose コマンド]{
     docker-compose up -d
+//}
+
  * この時点でWordPressはlocalhostでアクセス可能になるでしょう。
+ 
  * localhost/wp-adminに移動してWordPressの設定を開始します。
+ 
  * 注：dockerコンテナーをシャットダウンするには
+ 
+//list[docker_comnpose_down][docker シャットダウン]{
     docker-compose down --volumes 
+//}
+
     を実行してください。
- 5. これで、Webサイトを変更する準備が整いました。
+ 
+これで、Webサイトを変更する準備が整いました。
 
 //list[viewer_docker-compose][docker-compose.yml]{
 {
