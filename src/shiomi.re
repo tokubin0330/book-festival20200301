@@ -1,5 +1,14 @@
 = AWS CI/CD入門
 　皆さん、CI/CDしてますか？
+今や開発において当たり前になった CI/CD。
+当たり前になった反面プロジェクトアサイン時から CI/CD が組み込まれていたりで、よく理解しないまま何気なく利用している人もいるのではないかと思います。
+また、新しい CI/CD ツールに載せ替えしたりすることもあるのではないかと思います。
+
+そのような環境の人のためにこの章では、もう一度 CI/CD の基礎を学び直せるように CI/CD 基礎から
+プロジェクトでよくある CI/CD の構成テンプレートを載せております。
+お役に立てていただければ幸いです。
+
+
 
 == CI/CDとは
 　CI/CD という言葉は今や IT 業界では一般的になっており、CI/CDが何を示しているのかを説明する機会が減ってきています。
@@ -161,8 +170,7 @@ GitLabRunner はレポジトリに置かれている gitlab-ci.yml のファイ�
 
 === CircleCI
 　「GitLabRunner」とは違いどんなレポジトリサービスでも CI を実施できるのが CircleCI です。
-
-
+#@# Circle CI について
 
 
 他にも TravisCI や Jenkins など様々な CI サービスがありますので、プロジェクトにあった CI ツールを選択して見てください。
@@ -171,13 +179,41 @@ GitLabRunner はレポジトリに置かれている gitlab-ci.yml のファイ�
 AWS にも CI/CD サービスが提供されています。
 
 === AWS CodeBuild
+　AWS CodeBuild は クラウド上で実行できるビルド環境を完全マネージドでカスタマイズできるビルドサービスです。
+ビルド用のサーバやソフトウェアの設定、実行環境はすべて AWS が管理しユーザはサーバを気にせずビルドスクリプトだけに集中できます。
+また、Docker ベースで実行環境を作成できるため、CodeBuild が用意していない実行環境を利用したい場合は自分の Docker イメージ上でビルド環境をカスタマイズすることもできます。
+Code Build がデフォルトで提供している実行環境は下記のとおりです。
+
+・android 28	
+・Docker 18
+・dotnet 2.2	
+・Golang 1.12	
+・NodeJS 8、10	
+・java openjdk8、openjdk11
+・php 7.3	
+・python 3.7	
+・ruby 2.6
+
+Docker がデフォルトで提供されているので提供されていないランタイムは Docker on Docker を利用して自分で用意した Docker イメージでビルド内容をカスタマイズしましょう。
+
 === AWS CodeDeploy
-=== AWS CodePipline
-=== AWS CodeStar
+AWS CodeDeploy は AWS のコンピューティングサービス（Amazon EC2、AWS Fargate、AWS Lambda）へのデプロイを自動化できる完全マネージドサービスです。
+デプロイ対象ファイルの取得元として S3 または GitHub が選択できます。
+またデプロイ先が EC2 の場合 は Tag や AutoScaling グループを選択できるので、複数サーバにデプロイすることも可能です。
+更に、複数サーバの場合はどのようにデプロイを実行するかも指定できます。
+
+
+
+既存のプロジェクトで CI を GitLab Runner や CircleCI などを利用している場合 AWS 環境へデプロイする際にこの CodeDeploy を組み合わせて使う場合がよくあります。
+
+
+=== AWS CodePipeline
+
+
+
 
 ===[column] CI/CD ツールの乱立とクラウドベンダーの台頭
 
-aa
 
 ===[/column]
 
