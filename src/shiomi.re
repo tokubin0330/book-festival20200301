@@ -170,7 +170,12 @@ GitLabRunner はレポジトリに置かれている gitlab-ci.yml のファイ�
 
 
 === CircleCI
-　「GitLabRunner」とは違いどんなレポジトリサービスでも CI を実施できるのが CircleCI です。
+ 「GitLabRunner」とは違いどんなレポジトリサービスでも CI を実施できるのが CircleCI です。
+GitHub などのレポジトリサービスと連携させることで CircleCI が提供するクラウドサーバ上で、
+ビルドやテスト、デプロイまで行うことができるサービスです。
+
+
+
 #@# Circle CI について
 
 
