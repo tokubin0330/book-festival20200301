@@ -236,9 +236,13 @@ WordPressの静的化に関しては以下のような静的化ホスティン�
   https://www.getshifter.io/
 
   *Shifterの特徴としては
-  1. 今回S3で運用した並の金額で運用する事ができる
-  2. 静的化サイトでありながらも、問い合わせフォーム（ContactForm7）を使う事ができる
+  1. 静的コンテンツがCDN上で配信されるので爆速。
+  2. 静的化サイトでありながらも、問い合わせフォームプラグイン（ContactForm7）を使う事ができる
+　
+  上記2つのめっちゃいいメリットの割に月額料金が割と安い
+//}
 
+//image[Shifter][Shfiterの価格][scale=0.8]{
 //}
 
 //list[hardpress][Hardpress]{
