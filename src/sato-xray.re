@@ -52,6 +52,13 @@ X-Ray SDKの対応言語
 今回は、Node.jsを利用して送信してみましょう。
 SDKは各ライブラリをラッピングしてトレースデータを収集するため、
 受信リクエストはExpressまたはRestify、SQLクエリはpgまたはmysqlを利用ししているものが収集対象です。
+各言語の対応環境の詳細については、X-Rayの開発者ガイドなどを参照してください。
+
+@<href>{https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/aws-xray.html}
+
+
+サンプルコードは下記GitHubリポジトリに保存しています。
+https://github.com/takaaki-s/xray-node-example
 
 
 === ２．AWS SDKを利用する
