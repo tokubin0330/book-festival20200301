@@ -43,7 +43,7 @@
  3. 以下の内容でdocker-compose.ymlというファイルを作成します。
  4. プロジェクトディレクトリで、次のコマンドを実行します。
 
-//list[docker-compose][docker-compose コマンド]{
+//cmd{
     docker-compose up -d
 //}
 
@@ -53,7 +53,7 @@
  
  * 注：dockerコンテナーをシャットダウンするには
  
-//list[docker_comnpose_down][docker シャットダウン]{
+//cmd{
     docker-compose down --volumes 
 //}
 
@@ -191,7 +191,8 @@ S3 	$0.54
 //}
 
 また、私が良く使っている某G社のレンタルサーバーと比較してみると以下のような結果になります。
-＊1ドル108円で計算
+@<br>{}
+【1ドル108円で計算】
 
 //table[rental_s3_price][レンタルサバーと静的化の比較]{
 type 	月間費用
@@ -242,7 +243,7 @@ WordPressの静的化に関しては以下のような静的化ホスティン�
   Shifterの価格については以下のようになっています。
 //}
 
-//image[Shifter][Shfiterの価格][scale=0.6]{
+//image[Shifter][Shfiterの価格][scale=0.8]{
 //}
 
 //list[hardpress][Hardpress]{
@@ -258,6 +259,6 @@ WordPressの静的化に関しては以下のような静的化ホスティン�
 //image[hardypress][hardypressの価格][scale=0.6]{
 //}
 
-今回S3でWordPressを静的化について検証してきましたが、正直なところ現時点では上記のShifterやHardpressには勝る事ができないと言うのが現実かもしれません。
+今回AWSを利用してのWordPressを静的化について検証してきましたが、正直なところ現時点では上記のShifterやHardpressには勝る事ができないと言うのが現実かもしれません。
 
-WordPressの需要がまだ高いこの時代に、AWSの特徴を活かした高可用性で静的化でありながらも様々なプラグインを利用できるようなサービスの登場を待っていきたいと思います。
+WordPressの需要がまだ高いこの時代に、AWSの特徴を活かした高可用性で静的化でありながらも様々なプラグインを利用できるようなサービスの開発について考察し続けていきたいと思います。
