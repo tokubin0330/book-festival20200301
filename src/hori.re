@@ -1,4 +1,4 @@
-= AWSを使用して静的WordPressをデプロイする
+= 100円でお釣りがくる！実践WordPress静的ホスティング
 
 == はじめに
 
@@ -243,7 +243,7 @@ WordPressの静的化に関しては以下のような静的化ホスティン�
   Shifterの価格については以下のようになっています。
 //}
 
-//image[Shifter][Shfiterの価格][scale=0.8]{
+//image[Shifter][Shfiterの価格][scale=0.7]{
 //}
 
 //list[hardpress][Hardpress]{
