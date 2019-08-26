@@ -8,8 +8,6 @@
 プロジェクトでよくある CI/CD の構成テンプレートを載せております。
 お役に立てていただければ幸いです。
 
-
-
 == CI/CDとは
 　CI/CD という言葉は今や IT 業界では一般的になっており、CI/CDが何を示しているのかを説明する機会が減ってきています。
 またプロジェクト毎や会社毎または、個人の認識の違いで CI/CD が取りうる範囲が少し違うこともしばしばあります。
@@ -170,9 +168,6 @@ GitHub などのレポジトリサービスと連携させることで CircleCI 
 
 
 
-#@# Circle CI について
-
-
 他にも TravisCI や Jenkins など様々な CI サービスがありますので、プロジェクトにあった CI ツールを選択して見てください。
 
 == AWSが提供する CI/CD サービス
@@ -185,14 +180,14 @@ AWS にも CI/CD サービスが提供されています。
 Code Build がデフォルトで提供している実行環境は下記のとおりです。
 
 ・android 28	
-・Docker 18
-・dotnet 2.2	
-・Golang 1.12	
-・NodeJS 8、10	
-・java openjdk8、openjdk11
-・php 7.3	
-・python 3.7	
-・ruby 2.6
+・Docker 18  
+・dotnet 2.2  	
+・Golang 1.12  	
+・NodeJS 8、10  	
+・java openjdk8、openjdk11  
+・php 7.3  
+・python 3.7  
+・ruby 2.6  
 
 Docker がデフォルトで提供されているので提供されていないランタイムは Docker on Docker を利用して自分で用意した Docker イメージでビルド内容をカスタマイズしましょう。
 
@@ -230,9 +225,134 @@ Docker がデフォルトで提供されているので提供されていない�
 == 開発を楽にする CI 環境の作り方
 　この項では、実際の本番構成を想定した、CI 環境の例を説明します。
 
-=== GitLabRunnerをつかった CI 環境の例
+=== GitLabRunner + AWS クラウドサーバ 環境下での CI の例
+　GitLabRunner を使った CI 環境の例を紹介します。
+GitLabRunner を AWS で利用する場合最終デリバリー先は S3 バケットとすることが多いです。
+GitLabRunner は CD として AWS サービスを操作することができないので S3 バケットにデリバリーした後、AWS CodeDeploy サービスなどを利用して
+S3 バケットから各 AWS クラウドサービスにデプロイする CI/CD 環境を作成することがよくあります。
+今回も同様に S3 バケットにデリバリーすることろまで GitLabRunner で行います。
+
+次がサンプルの gitlab-ci.yml ファイルの内容です(@<list>{gitlab})。
+npm で管理されている javascript プロジェクトを利用します。
+ビルドしたコードを aws cli によって s3 へデリバリーするサンプルプロジェクトです。
 
 
+
+//listnum[gitlab][gitlab-ci.yml][yaml]{
+.lint_template: &lint_definition
+  image: node:8.15.1-alpine
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    untracked: true
+    paths:
+      - app/node_modules/
+      - app/dist/
+  before_script:
+    - cd app
+    - apk add --no-cache git -q
+    - npm install --silent
+
+.deploy_template: &deploy_definition
+  image: python:3.7-alpine
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    untracked: true
+    paths:
+      - app/node_modules/
+      - app/dist/
+  before_script:
+    - cd app
+    - apk update
+    - pip install awscli --quiet
+
+stages:
+  - eslint
+  - test
+  - build
+  - deploy
+
+eslint:
+  <<: *lint_definition
+  stage: eslint
+  only:
+    - merge_requests
+  script:
+    - npx eslint ./app/**/*.js
+
+unittest:
+  <<: *lint_definition
+  stage: test
+  only:
+    - merge_requests
+  script:
+    - npm run test
+
+build:
+  <<: *lint_definition
+  stage: build
+  only:
+    - master
+  script:
+    - npm run prod
+
+deploy:
+  <<: *deploy_definition
+  stage: deploy
+  only:
+    - master
+  script:
+    - aws s3 cp ./dist/ s3://prod-bucket/dist --recursive --acl public-read
+//}
+
+==== テンプレート
+ .lint_template や .deploy_template は各 job で利用する共通の処理をテンプレート化することができます。
+これは gitLabRunner の機能ではなく yaml の機能で、エイリアスを定義しておくと任意の場所に yaml の記述をマージすることができます。
+各 job が Docker イメージを使いまわしたり同じモジュールを使います場合は最初にテンプレートを定義すると便利になります。
+
+==== image 
+ job を実行するための Docker イメージを指定します。
+各 job 毎にイメージを定義することができます。
+job 毎に同じイメージを利用する場合は template をうまく利用して Docker イメージを使い回す事もできます。
+
+==== cache 
+ cache は各 job 毎のキャッシュです。次のジョブに作成したコンテンツを引き渡したい場合にこのキャッシュを利用することができます。
+指定したディレクトリ配下のコンテンツが次のジョブに引き継がれますので、ビルドしたコードや、各ジョブで必要になるプロジェクトの展開したパッケージのソースコードなどをキャッシュで定義します。
+
+==== before_script 
+ before_script はこのテンプレートが実行される前に実行するスクリプトを定義できます。
+Docker 公式イメージだけでは足りないモジュールをインストールしたり、カスタムスクリプトを実行させたりユーザが自由に定義できます。
+
+==== stages 
+ stages では各 job をどのように実行していくかというパイプラインを定義します。
+job の名前は任意の名前を利用することができます。
+パイプラインは stages で定義されている job を上から順番に実行していきます。
+
+==== only 
+ only では job を実行したい条件を指定できます。
+例えばブランチ名やマージリクエスト時、タグの追加時、ブランチを削除したときなどが指定できます。
+
+
+==== eslint
+ eslint では静的解析を実行する job を定義しています。
+gitLabRunner はカレントディレクトリにブランチのソースコードを配置します。
+したがって相対パスで実行したいディレクトリを指定して npx コマンドで eslint を実行します。
+実行する Docker イメージは「<<: *lint_definition」を使ってテンプレートをマージさせています。
+また only で marge_request の条件がついているのでマーリリクエスト時にのみしか実行されないジョブになります。
+
+==== unittest
+ unittest では Unit テストを実行する job を定義しています。
+eslint の job 同様です。
+プロジェクトで利用している Unit テストツールのコマンドを実行します。
+実行結果をメッセージサービスに通知しても良いですし、GitLabRunner 上で結果を閲覧することも可能です。
+
+==== build
+ build では javascript のビルドを実行する job を定義しています。
+npm run prod で本番用のビルドコマンドを叩いてビルドを実行しています。
+
+==== deploy
+ deploy では aws cli を利用して s3 バケットへビルドしたソースコード群をデリバリーする job を定義しています。
+本番用の S3 バケットへビルドした静的ファイル群をデリバリーします。
+job 名は deploy となっていますが job 名は任意の名前をつけることができます。
 
 == 特徴を知って使い分けるデプロイパターン
 　最近のプロジェクトでは、デプロイ時に無停止を要求されるプロジェクトも多くあります。
@@ -240,32 +360,77 @@ Docker がデフォルトで提供されているので提供されていない�
 
 === ローリングアップデート
 　ローリングアップデートとは、本番インスタンスを最新バージョンのインスタンスと徐々に入れ替えていくアップデートの方法です。
-次の図のようにアップデートができます。
-#@# ローリングアップデートの図
+次の図のようにアップデートができます@<img>{rolling}。
+//image[rolling][ローリングアップデート][scale=0.8]{
+//}
+新しいバージョンのインスタンスを徐々に入れ替えていくことで最新バージョンのデプロイの失敗リスクを最小限に抑えつつアップデートすることができます。
 最終的には全てのインスタンスが最新バージョンに入れ替わりますが、途中古いバージョンと新しいバージョンが混在することになりますので
 アップデート内容は新・旧両方動作するようなアップデート内容でないとこの方法でアップデートできないことに注意しましょう。
 
 === ブルー・グリーンデプロイ
 　ブルー・グリーンデプロイとは、最新バージョンがデプロイされている環境を本番と完全に同様の構成で作成し
-DNSのレコードやロードバランサーのルーティングを古い環境から新しい環境へと切り替えることでアップデートを行う方法です。
-#@# ブルー・グリーンデプロイの図
+DNSのレコードやロードバランサーのルーティングを古い環境から新しい環境へと切り替えることでアップデートを行う方法です@<img>{blue-green}。
+
+//image[blue-green][ローリングアップデート][scale=0.8]{
+//}
 
 このアップデートは、DNSのレコード切り替えによって簡単に古いバージョンと新しいバージョンが切り替えられるので問題があった場合はすぐに古いバージョンへと切り戻しが行なえます。
 しかし、完全に新しいバージョンへ切り替えてしまうので、事前の動作チェックをしっかりと行う必要があります。
-ローリングアップデートとは異なり、新しいバージョンで問題があった場合は最悪切り戻すまでサービスが停止してしまいますので考慮する必要があります。
+ローリングアップデートとは異なり、新しいバージョンで問題があった場合はロールバックするまでは不具合のある新バージョンでしばらく動作するので、
+アプリケーションに影響があることを理解しておきましょう。
 
-== 本番環境にEC2インスタンスを利用するデプロイパターン
-#@# === レポジトリにGitLabを利用する場合
-#@# ==== AutoScaling 環境下でのローリングアップデート例
+== CodeStar によるローリングアップデートの例
+CodeStar とは AWS 上に CI/CD パイプラインを簡単に構築できるサービスです。
+AWS では CI/CD サービスとして下記の３つのサービス（俗に言う Code4 兄弟）を提供しています。
 
-=== GitHub + CodeDeploy によるローリングアップデートの例
+==== CodeBuild
 
-== 本番環境にサーバレスを利用するデプロイパターン
-=== S3バケットにデプロイ後CloudFrontのキャッシュを自動削除する例
 
-== 目指せ最速デプロイ ElasticBeansTalk を使ったデプロイパターン
+==== CodeDeploy
 
-== 付録
-#@# gitlab-ci.yml 
-#@# GitLabRunner をコマンド一発で作成できる CloudFormation
-#@# CodeBuild サンプル yml
+
+==== CodeCommit
+
+
+==== CodePipline 
+
+しかしサービスが増えるうちに自力で設定するのが大変であったり、4つのサービスコンソールを行き来するのが煩わしい、一つの箇所で管理したいといった要望
+が増えてきたのを受けて新しく CodeStar と呼ばれるサービスがリリースされました。
+
+CodeStar はアプリケーションのコーディングから CI/CD パイプラインをプロジェクトテンプレートの中から選択し、数分で設定することができます。
+Code4 兄弟の知識がなくても AWS が自動でビルドからデプロイの設定を行ってくれるので、初心者にとっては簡単に CI/CD を始めることができます。
+
+CodeStar の作成手順です。
+
+//image[codestar-1][codestar-1][scale=0.8]{
+//}
+
+//image[codestar-2][codestar-2][scale=0.8]{
+//}
+
+//image[codestar-3][codestar-3][scale=0.8]{
+//}
+
+//image[codestar-4][codestar-4][scale=0.8]{
+//}
+
+//image[codestar-5][codestar-5][scale=0.8]{
+//}
+
+//image[codestar-6][codestar-6][scale=0.8]{
+//}
+
+//image[codestar-7][codestar-7][scale=0.8]{
+//}
+
+//image[codestar-8][codestar-8][scale=0.8]{
+//}
+
+== まとめ
+　いかがでしたでしょうか。最初 CI/CD という言葉だけでは理解が及ばなかった部分をこの章を通して少しでも理解のお役に立てていただけると幸いです。
+現在のスピーディーなアジャイル開発スタイルではほぼ必須となっている CI/CD 。
+エンジニアは誰もが理解し使いこなせるようになっていれば、自分が所属しているプロジェクトの開発が少しでも楽になっていくかと思います。
+もしそうなっていないなら少しづつでいいですのでプロジェクトに導入してみてください。
+もしかしたら提案するだけだと色々言われて却下されるかもしれません。
+開発環境を楽にするために自分が主体的になって動いてみてください。
+きっと努力が報われ素晴らしいプロジェクト＆プロダクトになると思います。
