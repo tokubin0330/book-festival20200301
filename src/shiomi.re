@@ -408,24 +408,24 @@ CodeStar では数十種類のプロジェクトテンプレートから簡単�
 //image[codestar-2][codestar-2][scale=0.8]{
 //}
 
-プロジェクト作成画面では git のレポジトリを選択します。
+　プロジェクト作成画面では git のレポジトリを選択します。
 今回は GitHub を選択し、「GitHubに接続」を押下します@<img>{codestar-3}。
 //image[codestar-3][codestar-3][scale=0.8]{
 //}
 
-別ウィンドウで CodeStar と GitHub の連携認証が求められるので認証を行います。
+　別ウィンドウで CodeStar と GitHub の連携認証が求められるので認証を行います。
 「AWS CodeStar は GitHub に接続されました」と表示されると GitHub と連携され、レポジトリを作成する画面が表示されます@<img>{codestar-4}。
 レポジトリ名を確認し、問題なければ「次へ」を押下します。
 //image[codestar-4][codestar-4][scale=0.8]{
 //}
 
-プロジェクト詳細の確認では、CodeStar が作成する CI/CD パイプラインが表示されます@<img>{codestar-5}。
+　プロジェクト詳細の確認では、CodeStar が作成する CI/CD パイプラインが表示されます@<img>{codestar-5}。
 ここで EC2 のスペックを編集することができますので任意で変更します。
 問題なければ「プロジェクトを作成する」を押下します。
 //image[codestar-5][codestar-5][scale=0.8]{
 //}
 
-
+　
 //image[codestar-6][codestar-6][scale=0.8]{
 //}
 
