@@ -398,42 +398,47 @@ CodeStar はアプリケーションのコーディングから CI/CD パイプ�
 Code4 兄弟の知識がなくても AWS が自動でビルドからデプロイの設定を行ってくれるので、初心者にとっては簡単に CI/CD を始めることができます。
 
 CodeStar の作成手順です。
-　まず AWS コンソールから 「CodeStar」を検索し「新規プロジェクトの開始」を押下します@<img>{codestar-1}。
+　まず AWS コンソールから 「CodeStar」を検索し「新規プロジェクトの開始」を押下します（@<img>{codestar-1}）。
 //image[codestar-1][codestar-1][scale=0.8]{
 //}
 
-　すると、プロジェクトテンプレートの選択画面が表示されます@<img>{codestar-2}。
+　すると、プロジェクトテンプレートの選択画面が表示されます（@<img>{codestar-2}）。
 CodeStar では数十種類のプロジェクトテンプレートから簡単にアプリケーションと CI/CD 環境を構築することができます。
 今回は Laravel (Amazon EC2) を選択します。
 //image[codestar-2][codestar-2][scale=0.8]{
 //}
 
 　プロジェクト作成画面では git のレポジトリを選択します。
-今回は GitHub を選択し、「GitHubに接続」を押下します@<img>{codestar-3}。
+今回は GitHub を選択し、「GitHubに接続」を押下します（@<img>{codestar-3}）。
 //image[codestar-3][codestar-3][scale=0.8]{
 //}
 
 　別ウィンドウで CodeStar と GitHub の連携認証が求められるので認証を行います。
-「AWS CodeStar は GitHub に接続されました」と表示されると GitHub と連携され、レポジトリを作成する画面が表示されます@<img>{codestar-4}。
+「AWS CodeStar は GitHub に接続されました」と表示されると GitHub と連携され、レポジトリを作成する画面が表示されます（@<img>{codestar-4}）。
 レポジトリ名を確認し、問題なければ「次へ」を押下します。
 //image[codestar-4][codestar-4][scale=0.8]{
 //}
 
-　プロジェクト詳細の確認では、CodeStar が作成する CI/CD パイプラインが表示されます@<img>{codestar-5}。
+　プロジェクト詳細の確認では、CodeStar が作成する CI/CD パイプラインが表示されます（@<img>{codestar-5}）。
 ここで EC2 のスペックを編集することができますので任意で変更します。
 問題なければ「プロジェクトを作成する」を押下します。
 //image[codestar-5][codestar-5][scale=0.8]{
 //}
 
-　
-//image[codestar-6][codestar-6][scale=0.8]{
+　CodeStar に初めてアクセスする場合は CodeStar の管理コンソール上で表示される名前とメールを登録する必要があります（@<img>{codestar-6}）。
+入力したら「次へ」を押下します。
+//image[codestar-6][初回アクセス時の登録画面][scale=0.8]{
 //}
 
-//image[codestar-7][codestar-7][scale=0.8]{
+　少し待つと CodeStar は自動で GitHub に初期プロジェクトのテンプレート（@<img>{codestar-7}）と CI/CD 環境と CodeStar の管理画面をセットアップしてくれます。
+//image[codestar-7][GitHub 初期プロジェクト][scale=0.8]{
 //}
 
-//image[codestar-8][codestar-8][scale=0.8]{
+　CodeStar の管理画面ではプロジェクトごとに CI/CD の進行状況や成功・失敗状況、 プロジェクトの CI/CD 用の Wiki の編集、サーバの情報などを管理することができます@<img>{codestar-9}。
+また Code4兄弟の CI/CD 状況を見るためのメニューも用意されているので CodeStar 管理画面内で行いたい操作がすべて完結できるのが特徴です。
+//image[codestar-9][CodeStar 管理画面][scale=0.8]{
 //}
+
 
 == まとめ
 　いかがでしたでしょうか。最初 CI/CD という言葉だけでは理解が及ばなかった部分をこの章を通して少しでも理解のお役に立てていただけると幸いです。
