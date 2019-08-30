@@ -32,7 +32,7 @@ github上にリポジトリを公開しています。
 
 「さあ、解きましょう！楽しいチャレンジの時間デス」
 
-//image[minegishi-01][やってみよう]{
+//image[minegishi-01][]{
 //}
 
 //embed[latex]{
