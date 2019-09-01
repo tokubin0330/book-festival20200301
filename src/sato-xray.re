@@ -33,11 +33,33 @@ X-Ray SDKが対応している開発言語（環境）であれば、コード�
 
 == X-Rayへトレースデータを送信する
 
-トレースデータを送信する方法は３種類あります。それぞれの方法を試していきます。
+トレースデータを送信する方法は３種類あります。これから、それぞれの方法で実際にX-Rayにトレースデータを送信してみます。
 
-=== １．X-Ray SDKとX-Rayデーモンを利用する
+今回はローカルにDockerコンテナでテスト用の実行環境を作るため、DockerとDocker Composeが必要になります。
+インストール方法は以下の各公式サイトを参考にしてください。
 
-デーモンの配置が必要ですが、SDKが対応している言語、環境であれば一番かんたんに始められる方法です。
+ * Dockerのインストール@<br>{}@<href>{https://docs.docker.com/install/}
+ * Docker Composeのインストール@<br>{}@<href>{https://docs.docker.com/compose/install/}
+
+インストールが完了したら各コマンドを叩いて、正常にインストールがされていことを確認しましょう。筆者の環境では下記のような表示になりました。
+
+//cmd{
+$ docker --version
+Docker version 19.03.1, build 74b1e89
+
+$ docker-compose --version
+docker-compose version 1.24.1, build 4667896b
+//}
+
+X-Rayへアプリケーション側からデータを送信するにはX-Rayへの書き込み権限が必要になりますので、
+必要なIAMポリシーをもったユーザーを作成します。
+ACCESS_KEYとSECRET_IDは環境に認証情報を設定する際に使用しますので、どこかにコピーしておきます。
+
+// IAMユーザー作成〜認証情報作成の画面を３〜５枚程度挿入 //
+
+=== X-Ray SDKとX-Rayデーモンを利用する
+
+デーモンの配置が必要ですが、SDKが対応している言語、環境であれば比較的かんたんに始められる方法です。
 なお、AWS Lambdaで利用する場合は、デーモンをユーザー側で配置する必要はありません。
 
 X-Ray SDKの対応言語
@@ -49,91 +71,30 @@ X-Ray SDKの対応言語
  * Ruby
  * .NET
 
-今回は、Node.jsを利用して送信してみましょう。
+
+//quote{
+Node.jsのX-Ray SDKでトレースデータの収集を行いましたが、
+SQLクエリがキャプチャができず、
+執筆期間内で原因を調査していましたが原因の特定が間に合わなかったため
+サンプルプログラムでは手動で収集を行いました。
+//}
+
+
+ここでは、Node.jsを利用して送信してみます。
 SDKは各ライブラリをラッピングしてトレースデータを収集するため、
 受信リクエストはExpressまたはRestify、SQLクエリはpgまたはmysqlを利用ししているものが収集対象です。
 各言語の対応環境の詳細については、X-Rayの開発者ガイドなどを参照してください。
 
-@<href>{https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/aws-xray.html}
+ * @<href>{https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/aws-xray.html}
 
 
 サンプルコードは下記GitHubリポジトリに保存しています。
-https://github.com/takaaki-s/xray-node-example
 
+ * @<href>{https://github.com/takaaki-s/xray-node-example}
 
-=== ２．AWS SDKを利用する
+今回は下記のようにコンテナを定義しました。
 
-=== ３．AWS CLIを利用する
-
-今回はローカルにテスト用の実行環境を作るため、
-@<ami>{AWS CLI}、@<ami>{Docker}、@<ami>{Docker Compose}が必要になります。
-インストール方法は以下の各公式サイトを参考にしてください。
-
- * AWS CLIのインストール@<br>{}@<href>{https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-chap-install.html}
- * Dockerのインストール@<br>{}@<href>{https://docs.docker.com/install/}
- * Docker Composeのインストール@<br>{}@<href>{https://docs.docker.com/compose/install/}
-
-インストールが完了したら各コマンドを叩いて、正常にインストールがされていことを確認しましょう。筆者の環境では下記のような表示になりました。
-
-//cmd{
-$ aws --version
-aws-cli/1.16.166 Python/3.7.3 Darwin/18.7.0 botocore/1.12.156
-
-$ docker --version
-Docker version 19.03.1, build 74b1e89
-
-$ docker-compose --version
-docker-compose version 1.24.1, build 4667896b
-//}
-
-X-Rayへアプリケーション側からデータを送信するにはX-Rayへの書き込み権限が必要になりますので、
-必要なIAMポリシーをもったユーザーを作成します。
-
-// IAMユーザー作成〜認証情報作成の画面を３〜５枚程度挿入 //
-
-次に、認証情報をローカルに設定します。
-
-//cmd{
-$ aws configure --profile xray-test
-//}
-
-ここからテスト用のアプリケーションを構築していきます。
-適当なディレクトリを作成して、そのなかにプロジェクト用のファイルを作成していきます。
-
-//list[xray-packagejson][package.json]{
-{
-  "name": "xray-node-example",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node app.js"
-  }
-}
-//}
-
-次に、必要なパッケージをインストールします。
-
-//cmd{
-$ npm install express aws-sdk aws-xray-sdk
-//}
-
-X-Rayをテストするプログラムを設置します。
-
-//list[xray-appjs][app.js]{
-const express = require('express');
-const app = express();
-
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
-
-console.log('hoge');
-app.listen(3000);
-//}
-
-設置したプログラムを実行するDockerコンテナの定義ファイルを書きます。
-
-//list[xray-dockerjson][docker-compose.yml]{
+//list[nodejs-dockercompose][docker-compose.yml]{
 version: '3.7'
 services:
   nodejs:
@@ -142,24 +103,62 @@ services:
     working_dir: /home/node/app
     volumes:
       - ./app:/home/node/app
+      - ./.aws:/root/.aws
     ports:
       - '3000:3000'
     command: /bin/sh -c "npm install && npm run dev"
+  db:
+    image: mariadb:10.4-bionic
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: xray_example
+    volumes:
+      - ./db-data:/var/lib/mysql
+  xrayd:
+    build: ./docker/xrayd
+    volumes:
+      - ./.aws:/root/.aws
+    expose:
+      - "2000"
+    environment:
+      - AWS_REGION=ap-northeast-1
+  awscli:
+    build: ./docker/awscli
+    volumes:
+      - ./.aws:/root/.aws
 //}
 
-コンテナを起動してプログラムを実行してみましょう。
+
+はじめに、AWSの認証情報をこのテスト用の環境に設定します。
+下記コマンドを実行して、先ほど作成したユーザーのアクセスキーとシークレットアクセスキーを設定してください。
+なお、今回は東京リージョン（ap-northeast-1）を指定してください。
 
 //cmd{
-$ docker-compose up
+$ docker-compose run --rm awscli aws configure
+
+AWS Access Key ID [None]: <あなたのアクセスキー>
+AWS Secret Access Key [None] <あなたのシークレットアクセスキー>
+Default region name [None]: ap-northeast-1
+Default output format [None]: 何も入力せずにENTER
 //}
 
-コンテナが起動したあとにlocalhost:3000にアクセスするとHello Worldと表示されると思います。
-このときすでにX-Rayに計測されたデータが送信されているはずですので、画面を確認してみましょう。
+環境の構築ができたので、テスト用の環境を起動します。
 
-
-//list[aa][ほげ]{
-aaaa
+//cmd{
+$ docker-compose up -d
+$ docker-compose exec nodejs npx knex migrate:latest
+$ docker-compose exec nodejs npx knex seed:run
 //}
+
+
+
+
+
+=== AWS SDKを利用する
+
+=== AWS CLIを利用する
 
 == 収集したデータの可視化と分析
 
