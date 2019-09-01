@@ -113,7 +113,7 @@ $ amplify push
 次はプログラムを行います。
 App.jsに以下のようなコードを追加します
 
-//listnum[init][App.js][js]{
+//listnum[init][Predictions機能の初期設定][js]{
 import Amplify from '@aws-amplify/core';
 import Predictions, { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';
 import awsconfig from './aws-exports';
@@ -124,7 +124,7 @@ Amplify.addPluggable(new AmazonAIPredictionsProvider());
 
 App.jsのファイルの先頭に各種必要なライブラリなどのインポートとAmplifyの設定を行なっています。
 
-//listnum[converttext][App.js][js]{
+//listnum[converttext][テキストから音声に変換する][js]{
     Predictions.convert({
       textToSpeech: {
         source: {
@@ -138,7 +138,7 @@ App.jsのファイルの先頭に各種必要なライブラリなどのイン�
 //}
 テキストから音声に変換を行うプログラムです。textToGenerateSpeechは変数でinput要素に入力されたテキストを関数に渡しています。上記の場合resultに音声変換されたデータ(audioStream)が入ってきますので、audioStreamを利用して音声の再生を行うことができます。音声再生のコード部分についてはGitHubのコードをご参照ください。
 
-//listnum[converttext2][ConvertText2][js]{
+//listnum[converttext2][VoiceIdを指定して音声変換する][js]{
       textToSpeech: {
         source: {
           text: textToGenerateSpeech,
@@ -157,7 +157,7 @@ $ npm start
 簡単に音声がでませんでしたか？ 
 @<br>{}
 
-Amazon Pollyでは音声合成マークアップ言語(SSML)を利用することもできますが、現在AWS Amplifyで利用することはできません。SSMLを利用したい場合はAWS AmplifyのソースコードについてはGitHubに公開されているので、そちらを参考に独自にプログラムを行うのがいいかもしれません。AWS AmplifyのJavaScriptライブラリのURLは巻末にしております。
+Amazon Pollyでは音声合成マークアップ言語(SSML)を利用することもできますが、現在AWS Amplifyで利用することはできません。SSMLを利用したい場合はAWS AmplifyのソースコードについてはGitHubに公開されているので、そちらを参考に独自にプログラムを行うのがいいかもしれません。
 
 === テキスト翻訳機能を追加する
 次はテキストの翻訳を行います。この機能は@<strong>{Amazon Translate}を利用しています。AWS AmplifyのPredictionsではAIサービスを追加するごとにCLIコマンドの実行が必要になります。
@@ -188,7 +188,7 @@ $ amplify push
 //}
 
 次はプログラムを追加します。
-//listnum[translatettext][Translate][js]{
+//listnum[translatettext][テキストを翻訳する][js]{
     Predictions.convert({
       translateText: {
         source: {
@@ -220,7 +220,7 @@ setResponseという関数がありますが、これは「ステートフック
 
 まず先ほどまでの音声変換のプログラムでは声の設定が「Mizuki」という日本人女性の声になっていますので、英語の発音がよくありません。これを解決するために@<strong>{voiceId}の変更を行います。
 
-//listnum[translatespeechtext][TranslateAndSpeech][js]{
+//listnum[translatespeechtext][VoiceIdを指定して音声変換をする][js]{
 
   function generateTextToSpeech(text) {
     Predictions.convert({
@@ -246,7 +246,7 @@ setResponseという関数がありますが、これは「ステートフック
 //}
 
 次に上記の関数（上記の場合はgenerateTextToSpeech）を翻訳結果のプログラムから呼び出せば完成です。
-//listnum[translatetranslate][TranslateAndSpeech][js]{
+//listnum[translatetranslate][翻訳をおこなって音声変換の関数を呼び出す][js]{
   function translate() {
     Predictions.convert({
       translateText: {
@@ -285,7 +285,7 @@ $ amplify push
 
 プログラムは下記のコードを呼び出すことでラベル情報を取得することができます。
 
-//listnum[imagelabeling][LabelImage][js]{
+//listnum[imagelabeling][画像からラベル情報を取得する][js]{
 Predictions.identify({
       labels: {
         source: {
@@ -317,7 +317,7 @@ sourceに渡されているfileはFileオブジェクトですので<input type=
 ===　画像からエンティティを取得する
 エンティティ(Entity)とは何でしょうか。AWS AmplifyのPredictionsでは画像から取得できる顔や有名人の情報です。呼び出す関数のパラメーターによって使える機能が変わります。
 
-//listnum[imageentity][IdentifyのEntity機能][js]{
+//listnum[imageentity][画像からエンティティ情報を取得する][js]{
     Predictions.identify({
       entities: {
         source: {
