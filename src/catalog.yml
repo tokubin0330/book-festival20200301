@@ -2,8 +2,8 @@ PREDEF:
   # - preface.re
 
 CHAPS:
-  - yoshikawa-linux-security.re
   - minegishi-game.re
+  - yoshikawa-linux-security.re
   - shiomi.re
   - sato-xray.re
   - hori.re
