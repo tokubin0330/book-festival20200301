@@ -155,6 +155,10 @@ WordPressサイトをホスティングすることはセキュリティー上�
 
  wordpressからダウンロードしたWebサイトファイルをs3 bucketにアップロードします。
 
+//embed[latex]{
+\clearpage
+//}
+
 == WordPressの静的化検証
 
 === 検証にあたって
