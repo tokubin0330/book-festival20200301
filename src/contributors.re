@@ -12,9 +12,8 @@ DeveloperMagazine編集長を名乗らせてもらっている。
 @<href>{https://qiita.com/w-iijima}
 
 ===== 佐藤孝昭 第3章/第5章担当@<br>{}
-2017年2月株式会社Showcase-TVへ転職のため地方から上京。
-2018年はアウトプットの一環としてイベントにも参加しなきゃと出場したAWS DevDay Challengeで優勝！
-AWS認定ソリューションアーキテクトプロフェッショナル。
+AWS DevDay Challenge 2018で優勝！
+AWS認定ソリューションアーキテクトプロフェッショナル、セキュリティスペシャリティ
 
 @<href>{https://qiita.com/sato-takaaki}
 
