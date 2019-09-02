@@ -11,9 +11,10 @@ DeveloperMagazine編集長を名乗らせてもらっている。
 @<br>{}
 @<href>{https://qiita.com/w-iijima}
 
-===== 佐藤孝昭 第3章/第5章担当@<br>{}
-AWS DevDay Challenge 2018で優勝！
-AWS認定ソリューションアーキテクトプロフェッショナル、セキュリティスペシャリティ
+===== 佐藤孝昭 第4章担当@<br>{}
+地方のとある会社で長らく一人エンジニアをしていましたが、2017年に株式会社ショーケースに転職のため上京。
+2018年のAWS DevDay Challengeで優勝！アウトプットは大事です。
+AWS認定ソリューションアーキテクトプロフェッショナル、セキュリティ専門知識保持。
 
 @<href>{https://qiita.com/sato-takaaki}
 

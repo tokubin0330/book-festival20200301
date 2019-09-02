@@ -17,6 +17,10 @@
 分散トレーシングに対応しているため複雑化したマイクロサービスであってもリクエストを追跡が可能で、
 X-Ray SDKが対応している開発言語（環境）であれば、コードにはほぼ手を入れずにすぐに利用できます。
 
+//embed[latex]{
+\clearpage
+//}
+
 == X-Rayの画面
 
 ==== サービスマップ
@@ -27,6 +31,10 @@ X-Ray SDKが対応している開発言語（環境）であれば、コード�
 ヒストグラムをドラッグして範囲指定することでフィルタリングすることもできます。
 
 //image[xray-11][サービスマップ画面][scale=0.8]{
+//}
+
+//embed[latex]{
+\clearpage
 //}
 
 ==== トレース
@@ -88,6 +96,10 @@ X-Rayへアプリケーション側からデータを送信するにはX-Rayへ�
 //image[xray-14][ユーザー作成ステップ２][scale=0.8]{
 //}
 
+//embed[latex]{
+\clearpage
+//}
+
 アクセスキーIDとシークレットアクセスキーはテスト環境に認証情報を設定する際に使用しますので、一時的にどこかにコピーしておきます。
 以上で、プログラムから利用するユーザー作成は完了です。
 
@@ -105,6 +117,10 @@ SDKで収集したデータは一旦デーモンにUDPで送信されバッフ�
 
 X-Ray SDKはJava、Go、Node.js、Python、Ruby、.NETに対応していますが、
 ここでは、Node.jsを利用して送信してみます。
+
+//embed[latex]{
+\clearpage
+//}
 
 ====[column] かんたんではなかったX-Ray SDK
 
@@ -209,6 +225,10 @@ $ docker-compose exec nodejs npx knex seed:run
 
 Using environment: development
 Ran 2 seed files
+//}
+
+//embed[latex]{
+\clearpage
 //}
 
 DBマイグレーションの完了後、
@@ -390,6 +410,10 @@ X-Ray SDKの自動トレースが利用できない場合は、
 今回のサンプルプログラムでもLaravelのミドルウェアにトレース開始の処理をはさんで自動トレースを行うようにして、
 さらにDBのイベントをフックしてサブセグメントを生成するような処理にしました。
 
+//embed[latex]{
+\clearpage
+//}
+
 //list[xray-laravel1][/xray/app/Http/Middleware/XrayCapture.php]{
 public function handle($request, Closure $next)
 {
@@ -412,7 +436,7 @@ public function handle($request, Closure $next)
                 (new MySqlSegment())
                     ->setName('db.example.com')
                     ->setDatabaseType('MySQL')
-                    ->setQuery($sql)    // Make sure to remove sensitive data before passing in a query
+                    ->setQuery($sql)
                     ->begin()
                     ->end($query->time / 1000)
             );
@@ -436,7 +460,7 @@ public function terminate($request, $response)
 送信データをjson形式で用意しないといけない部分が面倒ですが、
 例えば下記のようなシェルスクリプトを用意することで、シェル内から比較的かんたんに送信することが可能です。
 デーモンを経由せずに直接X-Rayに送信していますので
-ローカルでのアプリのビルド時間や、CodeBuildでCI/CDの実行時間などをトレースして監視するのも面白いかもしれません。
+ローカルでのアプリのビルド時間や、CodeBuildでCI/CDの実行時間などをトレースして監視するのも面白のではないでしょうか。
 
 //list[xray-awscli][xray_putsegment.sh]{
 #!/bin/sh
@@ -445,7 +469,8 @@ GUID=$(dd if=/dev/random bs=12 count=1 2>/dev/null | od -An -tx1 | tr -d ' \t\n'
 TRACE_ID="1-$HEX_TIME-$GUID"
 END_TIME=$(date +%s)
 SEGMENT_ID=$(dd if=/dev/random bs=8 count=1 2>/dev/null | od -An -tx1 | tr -d ' \t\n')
-DOC="{\"trace_id\": \"$TRACE_ID\", \"id\": \"$SEGMENT_ID\", \"start_time\": $1, \"end_time\": $END_TIME, \"name\": \"$2\"}"
+DOC="{\"trace_id\": \"$TRACE_ID\", \"id\": \"$SEGMENT_ID\", \"start_time\": $1, \"end_time\": 
+$END_TIME, \"name\": \"$2\"}"
 aws xray put-trace-segments --trace-segment-documents "$DOC"
 //}
 
@@ -462,7 +487,7 @@ $ ./xray_putsegment.sh $START_TIME buildtime
 ここまでX-Rayの導入方法を駆け足で解説してきましたが、
 X-Rayでトレースデータの収集を行うことで、アプリケーション内部の動きを可視化することができるようになりました。
 次のステップとして、可視化されたトレースデータを使ってボトルネックの特定・改善に役立ててみたり
-CloudWatchとSNSを組み合わせて、あるAPIのレスポンスタイムが落ちてきた際に通知を出す等するのも良いかもしれません。
+CloudWatchとSNSを組み合わせて、あるAPIのレスポンスタイムが落ちてきた際に通知を出す等活用してアプリケーションの品質を上げていきましょう。
 
 == 用語
 
