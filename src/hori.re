@@ -230,6 +230,10 @@ S3でWordPressを静的化を検証するに当たって、PVが多いサイト�
 
 WordPressの静的化に関しては以下のような静的化ホスティングを可能にするサービスが登場しました。
 
+//embed[latex]{
+\clearpage
+//}
+
 //list[Shifter_URl][Shifter]{
   * Shifter
   https://www.getshifter.io/
