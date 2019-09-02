@@ -339,9 +339,9 @@ celebrityDetectionをtrueにすると「有名人の検出」をおこないま�
  * Pose - 顔の向き。Roll/Pitch/Yawで構成されます
  * Name - 推測された有名人の名前(例:Jeff Bezos)
 
-celebrityDetectionをfalse、あるいはパラメーターに追加しない場合は検出された全員の顔の情報を出力します。出力では@<strong>{Confidence}という情報が追加されます。こちらは画像のラベリングと同様に「BoundingBoxの精度」になります。有名人検出機能については日本の有名人の検出も可能で精度が良いです。是非試してみてください。
+celebrityDetectionをfalse、あるいはパラメーターに追加しない場合は画像から検出された全部の顔の情報を出力します。出力されるJSONには@<strong>{Confidence}という情報が追加されます。こちらは画像のラベリングと同様に「BoundingBoxの精度」になります。また有名人検出機能については日本の有名人の検出も可能で精度が良いです。是非試してみてください。
 
-=== 独自の顔マッチングシステムを構築する
+#@# === 独自の顔マッチングシステムを構築する
 
 
 == 日本語未対応のAIサービス
@@ -372,7 +372,7 @@ Identifyの機能で、画像からテキスト情報の抽出を行います。
 
 == 関連URLについて
 
- * 本章にて作成されたソースコード @<href>{https://github.com/}
  * AWS Amplifyの公式ドキュメント @<href>{https://aws-amplify.github.io/docs/js/predictions}
  * AWS AmplifyのPredictionsのGitHubにあるJavaScriptライブラリ @<href>{https://github.com/aws-amplify/amplify-js/tree/master/packages/predictions}
- * AWS Amplify情報を発信している個人の技術ブログ @<href>{https://omuriceman.hatenablog.com}
+ * 本章にて作成したサンプルプログラム @<href>{https://github.com/wataruiijima/amplify-predictions}
+ * AWS Amplify情報などを発信している個人の技術ブログ @<href>{https://omuriceman.hatenablog.com}
