@@ -389,30 +389,30 @@ Code4 兄弟の知識がなくても AWS が自動でビルドからデプロイ
 CodeStar の作成手順です。
 
 まず AWS コンソールから 「CodeStar」を検索し「新規プロジェクトの開始」を押下します（@<img>{codestar-1}）。
-//image[codestar-1][codestar-1][scale=0.8]{
+//image[codestar-1][CodeStar][scale=0.8]{
 //}
 
 すると、プロジェクトテンプレートの選択画面が表示されます（@<img>{codestar-2}）。
 CodeStar では数十種類のプロジェクトテンプレートから簡単にアプリケーションと CI/CD 環境を構築することができます。
 今回は Laravel (Amazon EC2) を選択します。
-//image[codestar-2][codestar-2][scale=0.8]{
+//image[codestar-2][テンプレートの選択][scale=0.8]{
 //}
 
 プロジェクト作成画面では git のレポジトリを選択します。
 今回は GitHub を選択し、「GitHubに接続」を押下します（@<img>{codestar-3}）。
-//image[codestar-3][codestar-3][scale=0.8]{
+//image[codestar-3][レポジトリの選択][scale=0.8]{
 //}
 
 別ウィンドウで CodeStar と GitHub の連携認証が求められるので認証を行います。
 「AWS CodeStar は GitHub に接続されました」と表示されると GitHub と連携され、レポジトリを作成する画面が表示されます（@<img>{codestar-4}）。
 レポジトリ名を確認し、問題なければ「次へ」を押下します。
-//image[codestar-4][codestar-4][scale=0.8]{
+//image[codestar-4][プロジェクトの作成][scale=0.8]{
 //}
 
 プロジェクト詳細の確認では、CodeStar が作成する CI/CD パイプラインが表示されます（@<img>{codestar-5}）。
 ここで EC2 のスペックを編集することができますので任意で変更します。
 問題なければ「プロジェクトを作成する」を押下します。
-//image[codestar-5][codestar-5][scale=0.8]{
+//image[codestar-5][パイプライン][scale=0.8]{
 //}
 
 CodeStar に初めてアクセスする場合は CodeStar の管理コンソール上で表示される名前とメールを登録する必要があります（@<img>{codestar-6}）。
