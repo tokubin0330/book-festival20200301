@@ -1,4 +1,4 @@
-= AWS Amplify Predictionsで始めるAI/ML入門
+= どんとこい機械学習！AWS Amplify Predictionsでお手軽AI/ML開発
 
 == はじめに
 私は@<strong>{AWS Amplify}を業務での導入やブログなどで紹介しておりますが、日々需要が高まってきていることを感じています。この章では2019年7月に追加された機能@<strong>{「Predictions」}を活用したAI/MLサービスの開発をご紹介したいと思います。
@@ -72,8 +72,8 @@ $ amplify init
 $ yarn add aws-amplify
 //}
 
-== AIサービスの開発を行う
-Presictionsの機能を使って開発を行ってみましょう。それぞれのサンプルコードはGitHubにアップロードしておきます。GitHub等の各種URLは巻末に記載してあります。
+== Predictionsを使用してAI/MLサービスの開発を行う
+Presictionsの機能を使って開発を行ってみましょう。それぞれのサンプルコードはGitHubにアップロードしておきます。GitHub等の各種URLは章末に記載してあります。
 
 === テキストから音声に変換
 テキスト内容を音声に変換し再生する機能の開発を行なっていきます。この音声変換は@<strong>{Amazon Polly}が使われております。
@@ -297,14 +297,20 @@ Predictions.identify({
       .catch(err => setResponse(JSON.stringify(err, null, 2)))
 //}
 
-sourceに渡されているfileはFileオブジェクトですので<input type="file" onChange="~">などで受け取って関数に渡すことが可能です。この機能ではラベル検出以外にも@<strong>{安全ではないコンテンツ}の検出機能も備えております。こちらの機能だけ使いたい場合は「type: "ALL"」を「type: "UNSAFE"」としてください。逆にラベル検出だけ行う場合は「type: "LABELS"」とします。実装が完了したら「npm start」を実行し、ローカル環境で画像をアップロードしてみましょう。表示されるJSON情報の内容について補足します。
+sourceに渡されているfileはFileオブジェクトですので<input type="file" onChange="~">などで受け取って関数に渡すことが可能です。この機能ではラベル検出以外にも@<strong>{安全ではないコンテンツ}の検出機能も備えております。こちらの機能だけ使いたい場合は「type: "ALL"」を「type: "UNSAFE"」としてください。逆にラベル検出だけ行う場合は「type: "LABELS"」とします。
 
- * Name - 物体の名前(例:「Furniture」「Table」など)
- * BoundingBox - 画像上のラベルの位置。Width/Height/Left/Topの数値で構成されます
- * Metadata - 物体に関する情報です。下記のConfidence/Parentsが含まれます。
- * Confidence - BoundingBoxの位置の精度
- * Parents - 物体の親ラベルの情報が含まれることがあります。複数存在する場合もあります(例:PCの場合ParentsにComputerとElectronics)。
- * Unsafe - True/False。画像内にアダルトコンテンツが1つ以上存在する場合、Trueが返却されます。
+実装が完了したら「npm start」を実行し、ローカル環境で画像をアップロードしてみましょう。表示されるJSON情報の内容について補足します。
+
+//table[label1][ラベル検出で取得できるパラメーター]{
+項目	概要          	備考
+--------------------------------------
+Name	物体の名前            	例:「Furniture」「Table」など
+BoundingBox	画像上のラベルの位置            	Width/Height/Left/Topの数値で構成されます
+Metadata	物体に関する情報            	下記のConfidence/Parentsが含まれます
+Confidence	BoundingBoxの位置の精度            	-
+Parents	物体の親ラベルの情報            	例:PCの場合Parentsに「Computer」と「Electronics」
+Unsafe	アダルトコンテンツが含まれているか            	True/Falseで返却されます
+//}
 
 詳細に知りたい方はこちらのAmazon Rekognitionの公式ドキュメントをご確認ください。
 @<br>{}
@@ -314,7 +320,7 @@ sourceに渡されているfileはFileオブジェクトですので<input type=
 @<br>{}
 @<href>{https://docs.aws.amazon.com/ja_jp/rekognition/latest/dg/moderation.html}
 
-===　画像からエンティティを取得する
+=== 画像からエンティティを取得する
 エンティティ(Entity)とは何でしょうか。AWS AmplifyのPredictionsでは画像から取得できる顔や有名人の情報です。呼び出す関数のパラメーターによって使える機能が変わります。
 
 //listnum[imageentity][画像からエンティティ情報を取得する][js]{
@@ -333,16 +339,213 @@ sourceに渡されているfileはFileオブジェクトですので<input type=
 
 celebrityDetectionをtrueにすると「有名人の検出」をおこないます。この場合、画像に複数の人間がいたとしてもその全員の顔の検出を行われず、有名人（と推測されたもの）の顔検出のみ行われます。
 
- * BoundingBox - 画像上の顔の位置。Width/Height/Left/Topの数値で構成されます
- * Landmarks - 顔のパーツ(目や鼻や口)。typeとx,y座標で構成されます
- * Metadata - 顔の詳細情報。Pose/Nameなどで構成されます
- * Pose - 顔の向き。Roll/Pitch/Yawで構成されます
- * Name - 推測された有名人の名前(例:Jeff Bezos)
+//table[entity1][エンティティ検出で取得できるパラメーター]{
+項目	概要          	備考
+--------------------------------------
+BoundingBox	画像上の顔の位置            	Width/Height/Left/Topの数値で構成されます
+Landmarks	顔のパーツ(目や鼻や口)            	typeとx,y座標で構成されます
+Metadata	顔の詳細情報            	Pose/Nameなどで構成されます
+Pose	顔の向き            	Roll/Pitch/Yawで構成されます
+Name	推測された有名人の名前            	例:Jeff Bezos
+//}
 
 celebrityDetectionをfalse、あるいはパラメーターに追加しない場合は画像から検出された全部の顔の情報を出力します。出力されるJSONには@<strong>{Confidence}という情報が追加されます。こちらは画像のラベリングと同様に「BoundingBoxの精度」になります。また有名人検出機能については日本の有名人の検出も可能で精度が良いです。是非試してみてください。
 
-#@# === 独自の顔マッチングシステムを構築する
+== 独自の顔認証システムを構築する
 
+上記のEntity検出では「顔の検出」あるいは「有名人の検出」が可能ですが、「独自に登録した人の顔の検出」を行うことも可能です。その実装に入る前に、この「独自の顔検出」機能はどういったユースケースが考えられるでしょうか。アマゾン ウェブ サービス ジャパン株式会社の針原さんが作成された資料にて「顔認証受付サービス」にてAmazon Rekognitionを利用しております。
+
+@<href>{https://speakerdeck.com/hariby/dev-summit-2019}
+
+こういった「顔認証サービス」を利用したサービスをPredictionsで開発することも可能です。
+
+=== AWS Amplify Storageの追加
+独自の顔認証システム構築する場合、認証させたい顔をAmazon S3にアップロード必要があるため、今回は手軽に画像アップロード環境を構築できる@<strong>{Storage}というAWS Amplifyの機能を追加します。Storageの概要については私のブログにてできるだけ詳細に説明をしておりますので、そちらをご覧ください。@<href>{https://omuriceman.hatenablog.com/entry/amplify1}
+
+この記事では、Storageを作成しアプリケーションに追加する流れを簡単におさらいします。以下のコマンドを実行してください。
+
+//cmd{
+$ amplify add storage
+? Please select from one of the below mentioned services
+> Content (Images, audio, video, etc.) 
+
+? Please provide a friendly name for your resource that will be used to 
+label this category in the project:(そのままEnter)
+
+? Please provide bucket name:(そのままEnter)
+
+? Who should have access:
+>Auth and guest users 
+
+? What kind of access do you want for Authenticated users?
+>◉ create/update
+ ◉ read
+ ◉ delete
+
+#上記は認証済みユーザーはcreate/update,read,delete全てをできます。キーボードでaを押すと全選択できます。
+
+? What kind of access do you want for Guest users? 
+>◉ create/update
+ ◉ read
+ ◯ delete
+
+#今回のアプリケーションでは認証機構を作成していないので、未認証のユーザーもcreate/updateをできる必要があります。個別に権限を選択する場合はスペースキーを押してください。
+
+? Do you want to add a Lambda Trigger for your S3 Bucket? (そのままEnter)
+
+//}
+ここまででStorageの初期設定ができました。念の為Storage機能が追加されているか確認しましょう。
+
+//cmd{
+$ amplify status
+//}
+
+//table[amplifystatus][amplify status実行例]{
+Category	Resource Name          	Operation  	Provider Plugin
+--------------------------------------
+Storage	s3...            	Create 	awscloudformation
+//}
+
+となっていれば作成は完了です。ローカル環境で作成されたStorageの設定をpushして反映しましょう。
+
+//cmd{
+$ amplify push
+//}
+
+AWS CloudFormationが実行されて、設定したS3環境が構築されますので完了するまで数分待ちます。
+@<br>{}
+
+完了するとaws-exports.jsファイルにS3関連の設定情報が追記されています。
+
+ * aws_user_files_s3_bucket
+ * aws_user_files_s3_bucket_region
+ 
+=== AWS Amplify Predictionsを再設定する
+すでに上記で一度Entityの検出を行なっている場合、Predictionsのアップデートが必要になります。
+
+//cmd{
+$ amplify update predictions
+? Please select from of the below mentioned categories (Use arrow keys)
+❯ Identify 
+
+? Which identify resource would you like to update?
+❯ identifyEntities...
+
+? Would you like use the default configuration? 
+❯ Advanced Configuration 
+
+? Would you like to enable celebrity detection? Yes
+
+? Would you like to identify entities from a collection of images? Yes
+
+? How many entities would you like to identify? 10
+
+? Would you like to allow users to add images to this collection? Yes
+
+? Who should have access? 
+❯ Auth and Guest users 
+
+//}
+
+amplify statusの状態は以下の通りです。
+
+//table[amplifystatus2][amplify status]{
+Category	Resource Name          	Operation  	Provider Plugin
+--------------------------------------
+Function	RekognitionIndexFacesTrigger...            	Create 	awscloudformation
+Predictions	identifyEntities...            	Update 	awscloudformation
+Storage	s3...            	Update 	awscloudformation
+//}
+
+ここで新たにFunctionというカテゴリーが追加されております。これはAWS Lambdaで動くプログラムになっており、ファイルは./amplify/backend/function/{Resource Name}/に生成されています。
+@<br>{}
+
+amplify pushを行うとこれらのローカルファイルがAWS CloudFormationによってデプロイされて、AWS Lambdaに反映されます。
+
+=== アップロードした顔画像をインデックス付けする
+Storage/Function/Predictionsという３つの要素で独自の顔認証が構築されるのですが、先ほどまではCLIをポチポチしていただけですのでフローが理解しづらいと思います。理解の補足のために図を作成しました。
+
+//image[upload_face][顔の画像が登録される流れ][scale=0.8]
+
+図中の3番についてはAWS Lambdaにアップロードされたソースコード(./amplify/backend/function/{Resource Name}/src/index.js)に画像をコレクションに登録する関数があります。
+
+//listnum[rekognition][コレクションに顔を追加する][js]{
+const params1 = {
+  CollectionId: process.env.collectionId,
+  ExternalImageId: externalImageId,
+  Image: {
+    S3Object: {
+      Bucket: bucketName,
+      Name: decodeKey,
+    },
+  },
+};
+
+const result = await rekognition.indexFaces(params1).promise();
+//}
+
+先ほどCLI上でコマンドを実行したことで、図中の2~4までのバックエンド処理は構築が完成しておりますので次はStorageを使った画像のアップロードを行っていきます。
+
+=== Storageを使用して画像をアップロードする
+AWS Amplify Storageを利用した画像のアップロード方法についてまずはStorageに関する主要コードを掲載します。まずはStorageのimportを行います。
+
+//listnum[importstorage][Storageをインポートする][js]{
+import React, { useState } from 'react';
+import './App.css';
+import Amplify, { Predictions,Storage } from 'aws-amplify'; // <- ここにStorageを追加しています
+import { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';
+//}
+
+次にアップロードです。
+//listnum[storage][画像をアップロードするコード][js]{
+    Storage.put(file.name, file, {
+      level: 'protected',
+      customPrefix: {
+        protected: 'protected/predictions/index-faces/',
+      }
+    });
+//}
+
+Storage機能によるファイルのアップロード機能では、protectedやprivateの権限でアップロードを行うとユーザーごとに割り振られたuser_identity_id(Amazon Cognito Identity ID)がバケット名が先頭についてしまいます。
+//listnum[storagepath1][一般的なStorageのアップロードパス]{
+protected/{user_identity_id}/hoge.png
+//}
+
+customPrefixを指定することで、user_identity_idの手前に指定した名前のパスを指定することが可能です。
+//listnum[storagepath2][customPrefixを付けた場合のアップロードパス]{
+protected/predictions/index-faces/{user_identity_id}/hoge.png
+//}
+
+このようにすることで前の項で説明したS3へ画像のアップロードを検知してLambdaを発動させる対象の範囲を絞ることができるようになるのです。上記の場合はindex-facesにアップロードされた画像のみLambdaをキックさせることができます。
+@<br>{}
+
+ここまで完了したら、顔認証を検証するために自分を含めた数枚程度の顔画像をアップロードするようにしてください。
+
+=== Predictionsを使用して顔認証をおこなう
+最後に顔の認証をおこないます。先ほどまでの作業で、任意の顔画像をアップロードしてインデックス登録されるところまで完了しました。次に登録されている顔と同じ顔の画像をアップして正しく認識できるか確認を行いましょう。
+@<br>{}
+
+先ほどのエンティティ検出のコードを1行変更するだけで対応ができます。
+//listnum[imageentity2][画像から独自の顔認証を行う][js]{
+    Predictions.identify({
+      entities: {
+        source: {
+          file,
+        },
+        collection:true,
+      }
+    }).then(result => {
+      setResponse(JSON.stringify(result, null, 2));
+    })
+      .catch(err => console.log(err))
+//}
+
+resultには前述したエンティティ検出のパラメーター以外に2つ追加されています。
+
+ * externalImageId アップロードされた画像と似ている画像のパス
+ * similarity externalImageIdとの類似度
+
+ほんの数十分で顔認証システムが完了してしまいました。AWS Amplify Predictionsおそるべしですね。
 
 == 日本語未対応のAIサービス
 簡単にAI機能を開発できる@<strong>{Predictions}ですがいくつか日本語に対応していない機能もあります。これらの詳細については、私個人の技術ブログにてご紹介します。
@@ -353,15 +556,20 @@ Convertの機能の1つに喋った内容からテキストを起こしてくれ
 === テキスト解析
 Interpretの機能で、テキストの内容から「言語」「感情」「構文」などを解析する機能がありますが、こちらは日本語に対応しておりません。@<strong>{Amazon Comprehend}を利用しています。
 
-"1 validation error detected: Value 'ja' at 'languageCode' failed to satisfy constraint: Member must satisfy enum value set: [de, pt, en, it, fr, es]"
+#@# "1 validation error detected: Value 'ja' at 'languageCode' failed to satisfy constraint: Member must satisfy enum value set: [de, pt, en, it, fr, es]"
 
 === 画像からテキストを検出
 Identifyの機能で、画像からテキスト情報の抽出を行います。OCR+構造化データなどの情報を抜き出すことが可能でとても便利な機能です。しかし残念ながら日本語には対応しておりません。@<strong>{Amazon Rekognition/Amazon Textract}を利用しています。
 
+//embed[latex]{
+\clearpage
+//}
+
 == まとめ
 この章ではAWS Amplifyに追加された「Predictions」を利用したAI/MLサービスについてご紹介しました。CLIコマンドの実行と数行のプログラムでアプリケーションの簡単に実装できるようになっていて、AI/MLサービスが身近になっていることを実感します。
-
-=== AWS Amplifyを学習する上で押さえておくべきポイント
+@<br>{}
+【AWS Amplifyを学習する上で押さえておくべきポイント】
+@<br>{}
 最初にお伝えした通りAWS Amplifyは裏側で他のAWSマネージドサービスを利用しています。AWS Amplifyの公式サイトの情報では理解ができない場合、下記のドキュメントなどを見ると理解が深まるかもしれません。
 
  * AWS AmplifyのGitHub
@@ -370,9 +578,17 @@ Identifyの機能で、画像からテキスト情報の抽出を行います。
  
 を見るとより理解が深まります。例えば今回のAI/MLサービスでは、AWS Amplifyの公式ドキュメント上ではどのようなJSONフォーマットになっているかが記載されておりませんでしたが、GitHubの情報から使用されている関数を特定してJavaScriptSDKのドキュメントを調査。それと同時にマネージドサービスのドキュメントの調査も行うようにして仕様の把握をおこなっています。
 
-== 関連URLについて
+== 紹介したURLについて
 
- * AWS Amplifyの公式ドキュメント @<href>{https://aws-amplify.github.io/docs/js/predictions}
- * AWS AmplifyのPredictionsのGitHubにあるJavaScriptライブラリ @<href>{https://github.com/aws-amplify/amplify-js/tree/master/packages/predictions}
- * 本章にて作成したサンプルプログラム @<href>{https://github.com/wataruiijima/amplify-predictions}
- * AWS Amplify情報などを発信している個人の技術ブログ @<href>{https://omuriceman.hatenablog.com}
+ * AWS Amplifyの公式ドキュメント 
+ @<br>{}
+ @<href>{https://aws-amplify.github.io/docs/js/predictions}
+ * AWS AmplifyのPredictionsのGitHubにあるJavaScriptライブラリ 
+ @<br>{}
+ @<href>{https://github.com/aws-amplify/amplify-js/tree/master/packages/predictions}
+ * 本章にて作成したサンプルプログラム 
+ @<br>{}
+ @<href>{https://github.com/wataruiijima/amplify-predictions}
+ * AWS Amplify情報などを発信している個人の技術ブログ 
+ @<br>{}
+ @<href>{https://omuriceman.hatenablog.com}
