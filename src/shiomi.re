@@ -173,14 +173,22 @@ AWS CodeBuild は クラウド上で実行できるビルド環境を完全マ�
 また、Docker ベースで実行環境を作成できるため、CodeBuild が用意していない実行環境を利用したい場合は自分の Docker イメージ上でビルド環境をカスタマイズすることもできます。
 Code Build がデフォルトで提供している実行環境は下記のとおりです。
 
-・android 28  
+・android 28
+
 ・Docker 18   
+
 ・dotnet 2.2  	
+
 ・Golang 1.12  	
+
 ・NodeJS 8、10  
+
 ・java openjdk8、openjdk11  
+
 ・php 7.3  
+
 ・python 3.7  
+
 ・ruby 2.6  
 
 Docker がデフォルトで提供されているので提供されていないランタイムは Docker on Docker を利用して自分で用意した Docker イメージでビルド内容をカスタマイズしましょう。
