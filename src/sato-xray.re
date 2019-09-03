@@ -305,7 +305,8 @@ const parentSeg = AWSXRay.getSegment();
 const books = await queryHelper(
   conn,
   parentSeg,
-  'SELECT b.title,a.author_name as author FROM books b INNER JOIN authors a ON a.id= b.author_id'
+  'SELECT b.title,a.author_name as author FROM books b '+
+  'INNER JOIN authors a ON a.id= b.author_id'
 );
 conn.end();
 
