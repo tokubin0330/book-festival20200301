@@ -46,19 +46,18 @@ AWS認定ソリューションアーキテクトプロフェッショナル、�
 オンプレミスからAWSへの移行やAWSにおけるサーバーレス開発にも取り組んでいます。
 
 
-===== 飯嶋渉 第6章担当@<br>{}
-2013年ごろより株式会社Showcase-TVにエンジニアとして入社。
-2018年11月にAWS Dev Day Challengeでプレゼンを行い優勝。
-DeveloperMagazine編集長を名乗らせてもらっている。
+===== omuriceman 第6章担当@<br>{}
+ハッカソンが好きでAWS Dev Day Challenge/SPAJAMなど優勝したり入賞したりしている。
+技術ブログも定期的に更新していて、たまに人気記事になったりする。
+DeveloperMagazineの編集長を名乗り始めた。
 @<br>{}
 @<href>{https://twitter.com/iijima_wataru}
 @<br>{}
-@<href>{https://qiita.com/w-iijima}
-
+@<href>{https://omuriceman.hatenablog.com}
 
 
 ==== 表紙デザイン　
-===== 相野谷 尚太@<br>{}
+===== 相野谷尚太@<br>{}
 2015年よりCyberAgent子会社にデザイナーとして入社。
 2017年にゲーム会社へ移り、2019年より株式会社Showcaseに入社。
 日々デザインをしつつ、フロント側のコーディングまで行っている。
@@ -66,8 +65,3 @@ DeveloperMagazine編集長を名乗らせてもらっている。
 @<href>{https://twitter.com/otsuao_shokai}
 @<br>{}
 @<href>{https://dribbble.com/s_ainoya}
-
-==== オムライス作成
-===== 山田英季@<br>{}
-2015年11月に、（株）and recipeを立ち上げ、「ごはんと旅は人をつなぐ。」をテーマにしたサイトの運営をおこなう。
-料理家としては、韓国、台湾、ロンドン、パリなど世界中に活躍の場を広げている。

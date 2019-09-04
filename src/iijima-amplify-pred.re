@@ -1,32 +1,32 @@
 = どんとこい機械学習！AWS Amplify Predictionsでお手軽AI/ML開発
 
 == はじめに
-私は@<strong>{AWS Amplify}を業務での導入やブログなどで紹介しておりますが、日々需要が高まってきていることを感じています。本章では2019年7月に追加された機能@<strong>{「Predictions」}を活用して簡単にAI/MLサービスの開発をする方法をご紹介します。
+私は@<strong>{AWS Amplify}を業務で導入したりブログなどで紹介していますが、日々需要が高まってきていることを感じています。本章では2019年7月に追加された機能@<strong>{「Predictions」}を活用して簡単にAI/ML(人工知能と機械学習)サービスの開発をする方法をご紹介します。
 @<br>{}
-AI/MLとは人工知能と機械学習のことです。それぞれの用語の詳細説明については本章では割愛いたします。
 
 == AWS Amplifyについておさらい
-AWS Amplifyはアプリケーションを素早く簡単に開発できるように「ストレージ/認証/解析/API」などの機能を提供しているAWSの各種マネージドサービスを、簡単に組み込める形で提供しているライブラリです。
-AWSが提供している各種サービス(Amazon S3/Amazon Cognitoなど)の面倒な設定をAWS Amplifyがまとめてやってくれる、とイメージしてください。
+AWS Amplifyはアプリケーションを素早く簡単に開発できるように「ストレージ/認証/解析/API」などの機能を提供しているAWSの各種マネージドサービス(Amazon S3/Amazon Cognitoなど)を、簡単に組み込める形で提供しているライブラリです。
+@<br>{}
+AWSが提供しているマネージドサービスサービスの面倒な設定をAWS Amplifyがまとめてやってくれる、とイメージしてください。
 
-また似たような名称で@<strong>{AWS Amplify Console}というサービスがありますがこちらは「Gitリポジトリ等を活用した簡単に継続的ホスティングできるサービス」で、今回のものと若干違いますのでご注意ください。AWS AmplifyやAWS Amplify Consoleについてよくわからない。という方は、定期的に私のブログで紹介しておりますので、詳しく知りたい方はご覧ください。
+また似たような名称で@<strong>{AWS Amplify Console}というサービスがありますがこちらは「Gitリポジトリ等を活用した簡単に継続的ホスティングできるサービス」で、今回のものと少し違いますのでご注意ください。AWS AmplifyやAWS Amplify Consoleについてよくわからない。という方は、定期的に私のブログで紹介していますので、興味のある方はご覧ください。
 
 == Predictionsの機能について
 AWS Amplifyの新機能である@<strong>{Predictions}ですが、大きく以下のような機能を開発することが可能です。
 
- 1. Convert(変換)
+==== Convert(変換)
 
   * 言語翻訳
-  * 音声変換
-  * 音声認識
+  * 音声変換(テキスト→音声)
+  * 音声認識(音声→テキスト)
 
- 2. Identify(識別)
+==== Identify(識別)
 
-  * 画像から文字認識(単語・表・本のページ)
-  * 画像からエンティティ認識(顔・有名人)
   * 画像からラベル認識(現実世界の物体)
+  * 画像からエンティティ認識(顔・有名人)
+  * 画像から文字認識(単語・表・本のページ)
  
- 3. Interpret(解釈)
+==== Interpret(解釈)
  
   * 自然言語処理
 
@@ -42,10 +42,10 @@ AWS Amplifyの新機能である@<strong>{Predictions}ですが、大きく以�
 AWS Amplifyでは簡単にアプリケーションを開発できますが、カスタマイズをしようと思うと裏側で使用しているマネージドサービスを調べたりすることが多くなるので、どのサービスを使っているのかを把握しておくことがオススメです。
 
 == 環境構築
-開発を行うにあたり環境構築を行います。AWS IAMでユーザーを作成する必要がありますので、「プログラムによるアクセス」ができる権限があるIAMユーザーを作成してください。以下のチュートリアルでは複数のAWSサービスを利用しますので、作成するユーザーについては管理者権限で作成されているのが望ましいです。
+開発を行うにあたり環境構築を行います。AWS IAMでユーザーを作成する必要がありますので、「プログラムによるアクセス」ができる権限があるIAMユーザーを作成してください。以下のチュートリアルでは複数のAWSサービスを利用しますので、作成するユーザーについては管理者権限(AdministratorAccessのポリシーがアタッチされている状態)で作成されているのが望ましいです。
 
 === AWS Amplify CLIコマンドのインストール
-AWS Amplifyを利用するのが初めての方は、AWS AmplifyによるCLIコマンドを実行できるライブラリを追加します。
+AWS Amplifyを利用するのが初めての方は、AWS AmplifyのCLIコマンドを実行できるライブラリを追加します。
 
 //cmd{
 $ npm install -g @aws-amplify/cli
@@ -68,7 +68,7 @@ $ npm start
 $ amplify init
 //}
 
-コマンドを実行して「開発エディタ」「開発アプリの種類」「フレームワークの種類」「パスの場所」「ビルドコマンド」を選択します。完了すると、AWS CloudFormationがデプロイ用のS3のバケット・認証/未認証ユーザーのIAMロールが行われます。
+コマンドを実行して「開発エディタ」「開発アプリの種類」「フレームワークの種類」「パスの場所」「ビルドコマンド」を選択します。完了すると、AWS CloudFormationを通じてデプロイ用のS3のバケット・認証/未認証ユーザーのIAMロールが作成されます。
 @<br>{}
 
 最後にWebアプリケーションでAWS AmplifyのJavaScriptライブラリを使用するため、下記のインストールも行ってください。
@@ -81,13 +81,14 @@ $ yarn add aws-amplify
 AWS Amplifyの初期設定が完了しましたので、Presictionsを使ってAI/ML開発を行ってみましょう。
 @<br>{}
 
-コマンドについてはできるだけ詳細に載せておりますが、ソースコードは主要な部分のみ掲載しております。それぞれのサンプルコードはGitHubにアップロードしておりますのでそちらを参考にしてください。GitHub等の各種URLは章末に記載してあります。
-
-=== テキストから音声に変換
-テキスト内容を音声に変換し再生する機能の開発を行なっていきます。この音声変換は@<strong>{Amazon Polly}が使われております。
+コマンドについてはできるだけ詳細に載せていますが、ソースコードは主要な部分のみ掲載しています。それぞれのサンプルコードはGitHubにアップロードしていますのでそちらを参考にしてください。GitHub等の各種URLは章末に記載しています。
 @<br>{}
 
-コマンドを実行してpredictionsと追加します。
+=== テキストから音声に変換
+テキスト内容を音声に変換し再生する機能の開発を行なっていきます。この音声変換は@<strong>{Amazon Polly}が使われています。
+@<br>{}
+
+コマンドを実行してpredictionsを追加します。
 //cmd{
 $ amplify add predictions
 //}
@@ -99,7 +100,8 @@ $ amplify add predictions
 > Convert
 
 # AWS Amplify Authが入ってない場合聞かれる可能性があります
-? You need to add auth (Amazon Cognito) to your project in order to add storage for user files. Do you want to add auth now? Yes
+? You need to add auth (Amazon Cognito) to your project in order to add storage for user files. 
+  Do you want to add auth now? Yes
 
 ? What would you like to convert?
 > Generate speech audio from text
@@ -134,7 +136,7 @@ Amplify.configure(awsconfig);
 Amplify.addPluggable(new AmazonAIPredictionsProvider());
 //}
 
-上記はAI/MLサービス開発に必要な各種ライブラリなどのインポートとAmplifyの設定を行なっています。今後の全てのサービスでこれらのライブラリは使用していきます。
+上記はAI/MLサービス開発に必要な各種ライブラリなどのインポートとAmplifyの設定を行なっています。これより先に開発する全ての機能でこれらのライブラリを使用していきます。
 
 //listnum[converttext][テキストから音声に変換する][js]{
 Predictions.convert({
@@ -161,16 +163,16 @@ audioCtx.decodeAudioData(result.audioStream, (buffer) => {
 }, (err) => console.log({err}));
 //}
 
-使用する「声」についてはCLIで作成時に選択した音声がデフォルト（今回の場合はMizuki）になりますが、voiceIdを変更することで別の声でも再生可能です。以下の例では男性のTakumiという声で再生を行います。
+#@# 使用する「声」についてはAWS Amplify CLIで作成時に選択した音声がデフォルト（今回の場合はMizuki）になりますが、voiceIdを変更することで別の声でも再生可能です。以下の例では男性のTakumiという声で再生を行います。
 
-//listnum[converttext2][voiceIdを指定して音声変換する][js]{
-textToSpeech: {
-  source: {
-    text: textToGenerateSpeech,
-  },
-  voiceId: "Takumi" //もしくは別の声 
-}
-//}
+#@# //listnum[converttext2][voiceIdを指定して音声変換する][js]{
+#@# textToSpeech: {
+#@#   source: {
+#@#     text: textToGenerateSpeech,
+#@#   },
+#@#   voiceId: "Takumi" //もしくは別の声 
+#@# }
+#@# //}
 
 プログラムが完了したらローカル環境で確認するためにコマンドを実行します。
 
@@ -181,7 +183,7 @@ $ npm start
 テキストを入力すると簡単に音声がでませんでしたか？
 @<br>{}
 
-Amazon Pollyでは音声合成マークアップ言語(SSML)を利用することもできますが、現在AWS Amplifyで利用することはできません。SSMLを利用したい場合はGitHubに公開されているAWS Amplifyのソースコードを参考に独自にプログラムを行うのがいいかもしれません。
+Amazon Pollyでは音声合成マークアップ言語(SSML)を利用することもできますが、現在AWS Amplifyで利用することはできません。
 
 === テキスト翻訳機能を追加する
 次はテキストの翻訳を行います。この機能は@<strong>{Amazon Translate}を利用しています。AWS AmplifyのPredictionsでは@<strong>{AI/MLサービスを追加するごとにCLIコマンドの実行が必要}になります。
@@ -225,10 +227,12 @@ Predictions.convert({
   .catch(err => setResponse(JSON.stringify(err, null, 2)))
 //}
 
-こんにちは」と入力すると、resultには {"text":"Hello","language":"en"} というオブジェクトが入ってきます。CLIで作成した言語変換の情報がデフォルトですがそれ以外の言語変換を行いたい場合、@<strong>{targetLanguage}とsourceの中にある@<strong>{language}を変更するようにしてください。
+「こんにちは」と入力すると、resultには {"text":"Hello","language":"en"} というオブジェクトが入ってきます。AWS Amplify CLIで作成した言語変換の情報がデフォルトですがそれ以外の言語変換を行いたい場合、@<strong>{targetLanguage}とsourceの中にある@<strong>{language}を変更するようにしてください。
 @<br>{}
 
-サポートしている言語情報については@<href>{https://docs.aws.amazon.com/translate/latest/dg/how-it-works.html#how-it-works-language-codes}をご参照ください。
+サポートしている言語情報については、下記のURLをご確認ください。
+@<br>{}
+@<href>{https://docs.aws.amazon.com/translate/latest/dg/how-it-works.html#how-it-works-language-codes}
 
 ====[column]React.jsの補足
 
@@ -245,9 +249,9 @@ setResponseという関数がありますが、これは「ステートフック
  2. 英語に翻訳
  3. 翻訳した文章を音声で出力
 
-先ほどまでの音声変換のプログラムでは声の設定が「Mizuki」という日本人女性の声になっていますので、英語の発音がよくありません。これを解決するために@<strong>{voiceId}の変更を行います。
+先ほどまでの音声変換のプログラムでは声の設定が「Mizuki」という日本人女性の声になっていますので、英語の発音がよくありません。これを解決するためにvoiceIdの変更を行います。
 
-//listnum[translatespeechtext][VoiceIdを指定して音声変換をする][js]{
+//listnum[translatespeechtext][voiceIdを指定して音声変換をする][js]{
 function generateTextToSpeech(text) {
   Predictions.convert({
     textToSpeech: {
@@ -324,9 +328,10 @@ Predictions.identify({
   .catch(err => setResponse(JSON.stringify(err, null, 2)))
 //}
 
-sourceに渡されているfileはFileオブジェクトの変数なので<input type="file" onChange="~">などで受け取って関数に渡すことが可能です。この機能ではラベル認識以外にも@<strong>{安全ではないコンテンツ}の検出機能も備えております。その機能だけ使いたい場合は「type: "ALL"」を「type: "UNSAFE"」としてください。逆にラベル検出だけ行う場合は「type: "LABELS"」とします。
+sourceに渡されているfileはFileオブジェクトの変数なので<input type="file" onChange="~">などで受け取って関数に渡すことが可能です。またこの機能ではラベル認識以外にも「@<strong>{安全ではないコンテンツ}」の検出機能も備えています。その機能だけ使いたい場合は「type: "ALL"」を「type: "UNSAFE"」としてください。逆にラベル検出だけ行う場合は「type: "LABELS"」とします。
 
 実装が完了したら「npm start」を実行し、ローカル環境で画像をアップロードしてみましょう。表示されるJSONのパラメーターについては以下の表に掲載しました。
+@<br>{}
 
 //table[label1][ラベル検出で取得できるパラメーター]{
 項目	概要          	備考
@@ -353,10 +358,10 @@ Unsafe	アダルトコンテンツが含まれているか            	True/Fals
 $ amplify add predictions
 
 ? Please select from of the below mentioned categories (Use arrow keys)
-❯ Identify 
+> Identify 
 
 ? What would you like to identify? 
-❯ Identify Entities 
+> Identify Entities 
 
 $ amplify push
 //}
@@ -376,7 +381,7 @@ Predictions.identify({
   .catch(err => console.log(err))
 //}
 
-celebrityDetectionをtrueにすると「有名人の検出」をおこないます。この場合、画像に複数の人間がいたとしてもその全員の顔の検出を行われず、@<strong>{有名人（と推測されたもの）の顔検出のみ行われます}。有名人については日本の有名人/芸能人の認識も可能で精度が良いです。是非試してみてください。
+celebrityDetectionをtrueにすると「有名人の認識」をおこないます。この場合、画像に複数の人間がいたとしてもその全員の顔の検出は行われず、@<strong>{有名人（と推測されたもの）の顔認識のみ行われます}。有名人については日本の有名人/芸能人の認識も可能で精度が良いです。是非試してみてください。
 
 //table[entity1][エンティティ認識で取得できるパラメーター]{
 項目	概要          	備考
@@ -392,14 +397,14 @@ celebrityDetectionをfalse、あるいはパラメーターに追加しない場
 
 == 独自の顔認証システムを構築する
 
-上記のエンティティ認識では「顔の検出」あるいは「有名人の認識」が可能ですが、「独自に登録した人の顔の認識」を行うことも可能です。その実装に入る前に、この「独自の顔認識」機能はどういったユースケースが考えられるでしょうか。アマゾン ウェブ サービス ジャパン株式会社の針原さんが作成された資料にて「顔認証受付サービス」にてAmazon Rekognitionを利用しております。
+上記のエンティティ認識では「顔の検出」あるいは「有名人の認識」が可能ですが、「独自に登録した人だけの顔の認識」を行うことも可能です。その実装に入る前に、この「独自の顔認識」機能はどういったユースケースが考えられるでしょうか。その1つに「顔認証受付サービス」にてAmazon Rekognitionを利用しているケースが紹介されています。
 @<br>{}
 @<href>{https://speakerdeck.com/hariby/dev-summit-2019}
 
 こういった「顔認証サービス」を利用したサービスをPredictionsで開発することも可能です。
 
 === AWS Amplify Storageの追加
-独自の顔認識システム構築する場合、認識させたい顔をAmazon S3にアップロード必要があるため、今回は手軽に画像アップロード環境を構築できる@<strong>{Storage}というAWS Amplifyの機能を追加します。Storageの概要については私のブログにてできるだけ詳細に説明をしておりますので、そちらをご覧ください。@<href>{https://omuriceman.hatenablog.com/entry/amplify1}
+独自の顔認識システム構築する場合、認識させたい顔をAmazon S3にアップロード必要があるため、今回は手軽に画像アップロード環境を構築できる@<strong>{Storage}というAWS Amplifyの機能を追加します。Storageの概要については私のブログにてできるだけ詳細に説明をしていますので、そちらをご覧ください。@<href>{https://omuriceman.hatenablog.com/entry/amplify1}
 
 この記事では、Storageを作成しアプリケーションに追加する流れを簡単におさらいします。以下のコマンドを実行してください。
 
@@ -465,13 +470,13 @@ AWS CloudFormationが実行されて、設定したS3環境が構築されます
 //cmd{
 $ amplify update predictions
 ? Please select from of the below mentioned categories (Use arrow keys)
-❯ Identify 
+> Identify 
 
 ? Which identify resource would you like to update?
-❯ identifyEntities...
+> identifyEntities...
 
 ? Would you like use the default configuration? 
-❯ Advanced Configuration 
+> Advanced Configuration 
 
 ? Would you like to enable celebrity detection? Yes
 
@@ -482,7 +487,7 @@ $ amplify update predictions
 ? Would you like to allow users to add images to this collection? Yes
 
 ? Who should have access? 
-❯ Auth and Guest users 
+> Auth and Guest users 
 
 //}
 
@@ -496,7 +501,7 @@ Predictions	identifyEntities...            	Update 	awscloudformation
 Storage	s3...            	Update 	awscloudformation
 //}
 
-ここで新たにFunctionというカテゴリーが追加されております。これはAWS Lambdaで動くプログラムになっており、ファイルは./amplify/backend/function/{Resource Name}/に生成されています。
+ここで新たに@<strong>{Function}というカテゴリーが追加されています。これはAWS Lambdaで動くプログラムになっており、ファイルは./amplify/backend/function/{Resource Name}/に生成されています。
 @<br>{}
 
 amplify pushを行うとこれらのローカルファイルがAWS CloudFormationによってデプロイされて、AWS Lambdaに反映されます。
@@ -523,7 +528,7 @@ const params1 = {
 const result = await rekognition.indexFaces(params1).promise(); // <-ここが重要
 //}
 
-コマンドを実行したことで、図中の2~4までのバックエンド処理は構築が完成しておりますので次はStorageを使った画像のアップロードを行っていきます。
+AWS Amplify CLIコマンドを実行したことで、図中の2~4までのバックエンド処理は構築が完成していますので次はStorageを使った画像のアップロードを行っていきます。
 
 === Storageを使用して画像をアップロードする
 AWS Amplify Storageを利用した画像のアップロード方法についてまずはStorageに関する主要コードを掲載します。まずはStorageのimportを行います。
@@ -558,10 +563,10 @@ protected/predictions/index-faces/{user_identity_id}/hoge.png
 このようにすることで前の項で説明したS3へ画像のアップロードを検知してLambdaを発動させる対象のバケット範囲を絞ることができるようになるのです。上記の場合はindex-facesにアップロードされた画像のみLambdaをキックさせることができます。
 @<br>{}
 
-ここまで完了したら、顔認証を検証するために自分を含めた数枚程度の顔画像をアップロードするようにしてください。
+ここまで完了したら、独自画像の顔認識を検証するために自分を含めた数枚程度の顔画像をアップロードするようにしてください。
 
 === Predictionsを使用して顔認証をおこなう
-最後に顔の認証をおこないます。先ほどまでの作業で、任意の顔画像をアップロードしてインデックス登録されるところまで完了しました。次に登録されている顔と同じ顔の画像をアップして正しく認識できるか確認を行いましょう。
+最後に顔の認識をおこないます。先ほどまでの作業で、任意の顔画像をアップロードしてインデックス登録されるところまで完了しました。次に登録されている顔と同じ顔の画像をアップして正しく認識できるか確認を行いましょう。
 @<br>{}
 
 先ほどのエンティティ検出のコードを1行変更するだけで対応ができます。
@@ -584,7 +589,7 @@ resultには前述したエンティティ検出のパラメーター以外に2�
  * externalImageId アップロードされた画像と似ている画像のパス
  * similarity externalImageIdとの類似度
 
-ほんの数十分で顔認証システムが完了してしまいました。AWS Amplify Predictionsおそるべしですね。
+ほんのわずかな時間で独自の顔認識システムが完成してしまいました。AWS Amplify Predictionsおそるべしですね。
 
 == 日本語未対応のAIサービス
 簡単にAI機能を開発できる@<strong>{Predictions}ですがいくつか日本語に対応していない機能もあります。これらの詳細については、私個人の技術ブログにてご紹介します。
@@ -606,16 +611,15 @@ Identifyの機能で、画像からテキスト情報の抽出を行います。
 
 == まとめ
 この章ではAWS Amplifyに追加された「Predictions」を利用したAI/MLサービスについてご紹介しました。CLIコマンドの実行と数行のプログラムでアプリケーションの簡単に実装できるようになっていて、AI/MLサービスが身近になっていることを実感します。
-@<br>{}
-【AWS Amplifyを学習する上で押さえておくべきポイント】
-@<br>{}
+
+==== AWS Amplifyを学習する上で押さえておくべきポイント
 最初にお伝えした通りAWS Amplifyは裏側で他のAWSマネージドサービスを利用しています。AWS Amplifyの公式サイトの情報では理解ができない場合、下記のドキュメントなどを見ると理解が深まるかもしれません。
 
  * AWS AmplifyのGitHub
  * AWS JavaScriptSDKのドキュメント
  * 裏側で使われているマネージドサービスのドキュメント
  
-を見るとより理解が深まります。例えば今回のAI/MLサービスでは、AWS Amplifyの公式ドキュメント上ではどのようなJSONフォーマットになっているかが記載されておりませんでしたが、GitHubの情報から使用されている関数を特定してJavaScriptSDKのドキュメントを調査。それと同時にマネージドサービスのドキュメントの調査も行うようにして仕様の把握をおこなっています。
+を見るとより理解が深まります。例えば今回のAI/MLサービスでは、AWS Amplifyの公式ドキュメント上ではどのようなJSONのレスポンスになっているかが記載されておりませんでしたが、GitHubの情報から使用されている関数を特定してJavaScriptSDKのドキュメントを調査。それと同時にマネージドサービスのドキュメントの調査も行うようにして仕様の把握をおこなっています。
 @<br>{}
 
 == Appendix
