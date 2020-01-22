@@ -155,10 +155,6 @@ WordPressサイトをホスティングすることはセキュリティー上�
 
  wordpressからダウンロードしたWebサイトファイルをs3 bucketにアップロードします。
 
-//embed[latex]{
-\clearpage
-//}
-
 == WordPressの静的化検証
 
 === 検証にあたって
@@ -229,10 +225,6 @@ S3でWordPressを静的化を検証するに当たって、PVが多いサイト�
 今回はWordPressを静的化してS3で運用した時とec2や一般のレンタルサーバーで運用した時のコストを比較して検証して見ました。検証の結果としては、問い合わせフォームやサイト内検索機能等を実装するためにはlambdaやapi gatewayを使って実装する必要はあるものの、サイト自体は静的化によってかなりのコスト削減ができることは確認できました。
 
 WordPressの静的化に関しては以下のような静的化ホスティングを可能にするサービスが登場しました。
-
-//embed[latex]{
-\clearpage
-//}
 
 //list[Shifter_URl][Shifter]{
   * Shifter
