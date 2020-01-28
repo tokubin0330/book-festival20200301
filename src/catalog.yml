@@ -2,6 +2,7 @@ PREDEF:
   # - preface.re
 
 CHAPS:
+  - amazons3.re
   - minegishi-game.re
   - yoshikawa-linux-security.re
   - shiomi.re
