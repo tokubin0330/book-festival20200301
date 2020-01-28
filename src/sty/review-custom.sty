@@ -1,1 +1,13 @@
 % for user-defined macro
+\def\@makechapterhead#1{%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \hrule height 0.50mm
+    \vskip1.5mm
+    \Huge \headfont #1\par\nobreak
+    \vskip1.5mm
+    \hrule height 0.50mm
+    \vskip \Cvs    
+    }} % 欧文は40pt
+\def\@evenhead{}%
+\def\@oddhead{}%
