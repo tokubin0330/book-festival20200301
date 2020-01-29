@@ -10,6 +10,7 @@ AWSの記念すべき最初のサービス！！！どこからでも好きな�
 //image[sample1][][scale=0.99]{
 //}
 
+
 //embed[latex]{
 \clearpage
 //}
