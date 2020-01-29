@@ -1,11 +1,18 @@
 = Amazon S3
+
+//note[]{ 
 AWSの記念すべき最初のサービス！！！どこからでも好きなだけ様々なファイルを保存する事ができるストレージ
 99.999999999%の高い耐久性と高いコスト効率が売り！！！
+ああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
 
-//image[illust][scale=0.6]{
 //}
 
+//image[sample1][][scale=0.99]{
+//}
 
+//embed[latex]{
+\clearpage
+//}
 
 ==[nonum] 概要
 Amazon S3はAmazon Simple Storage Serviceの略になります。
