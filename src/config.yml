@@ -106,7 +106,7 @@ epubversion: 3
 htmlversion: 5
 
 # 目次として抽出する見出しレベル
-toclevel: 3
+toclevel: 1
 
 # 採番の設定。採番させたくない見出しには「==[nonum]」のようにnonum指定をする
 #
@@ -322,12 +322,16 @@ texstyle: ["reviewmacro"]
 #
 # B5の設定(10pt 40文字×35行) - 紙版
 #texdocumentclass: ["review-jsbook", "media=print,paper=b5,serial_pagination=true,hiddenfolio=nikko-pc,openany,fontsize=10pt,baselineskip=15.4pt,line_length=40zw,number_of_lines=35,head_space=30mm,headsep=10mm,headheight=5mm,footskip=10mm"]
-texdocumentclass: ["review-jsbook", "media=print,paper=b5,serial_pagination=true,hiddenfolio=nikko-pc,openany,fontsize=10pt,baselineskip=15.4pt,line_length=45zw,number_of_lines=40,head_space=20mm,headsep=5mm,headheight=5mm,footskip=10mm"]
+# texdocumentclass: ["review-jsbook", "media=print,paper=b5,serial_pagination=true,hiddenfolio=nikko-pc,openany,fontsize=10pt,baselineskip=15.4pt,line_length=45zw,number_of_lines=40,head_space=20mm,headsep=5mm,headheight=5mm,footskip=10mm"]
 
 # B5の設定(10pt 40文字×35行) - 電子版
 # texdocumentclass: ["review-jsbook", "media=ebook,paper=b5,serial_pagination=true,openany,fontsize=10pt,baselineskip=15.4pt,line_length=40zw,number_of_lines=35,head_space=30mm,headsep=10mm,headheight=5mm,footskip=10mm"]
 # A5の設定(9pt 38文字×37行) - 紙版
 # texdocumentclass: ["review-jsbook", "media=print,paper=a5,serial_pagination=true,hiddenfolio=nikko-pc,openany,fontsize=9pt,baselineskip=13pt,line_length=38zw,number_of_lines=37,head_space=15mm,headsep=3mm,headheight=5mm,footskip=10mm"]
+
+# texdocumentclass: ["review-jsbook", "media=print,paper=a5,serial_pagination=true,hiddenfolio=nikko-pc,openany,fontsize=9pt,baselineskip=13pt,line_length=46zw,number_of_lines=43,head_space=5mm,headsep=3mm,headheight=5mm,footskip=10mm,gutter=5mm"]
+texdocumentclass: ["review-jsbook", "media=ebook,paper=a5,serial_pagination=true,hiddenfolio=nikko-pc,openany,fontsize=10pt,baselineskip=13pt,line_length=40zw,number_of_lines=42,head_space=5mm,headsep=3mm,headheight=5mm,footskip=10mm,gutter=10mm"]
+
 # A5の設定(9pt 38文字×37行) - 電子版
 # texdocumentclass: ["review-jsbook", "media=ebook,paper=a5,serial_pagination=true,openany,fontsize=9pt,baselineskip=13pt,line_length=38zw,number_of_lines=37,head_space=15mm,headsep=3mm,headheight=5mm,footskip=10mm"]
 #
