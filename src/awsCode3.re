@@ -12,6 +12,8 @@ Code シリーズには CodeCommit、CodeBuild、CodeDeploy、CodePipeline と�
 //image[illust][][scale=0.80]{
 //}
 
+
+
 CICD サービスは世の中にたくさんありますが、AWS サービスを利用する場合は AWS サービスとの連携がスムーズになります。
 特にデプロイサービスである CodeDeploy を利用すると、カナリアデプロイやブルーグリーンデプロイなどリリース時のリスクを
 最小限に抑えるリリース方法を簡単に構築できるのでおすすめです。
@@ -20,6 +22,10 @@ CICD サービスは世の中にたくさんありますが、AWS サービス�
 //embed[latex]{
 \clearpage
 //}
+
+==[nonum] 似たようなサービス
+
+
 
 
 ==[nonum] Code 3兄弟
