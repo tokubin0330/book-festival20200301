@@ -1,7 +1,7 @@
 = Amazon S3
 
 //embed[latex]{
-\begin{tcolorbox}[title=どんなサービス？,sharp corners]
+\begin{tcolorbox}[colframe=black,colback=white,colbacktitle=black,coltitle=white,coltext=black,title=どんなサービス？,sharp corners]
 AWSの記念すべき最初のサービス！！！どこからでも好きなだけ様々なファイルを保存する事ができるストレージ
 99.999999999％の高い耐久性と高いコスト効率が売り！！！ああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
 \end{tcolorbox}
