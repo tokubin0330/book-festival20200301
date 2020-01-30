@@ -1,14 +1,10 @@
 PREDEF:
-  # - preface.re
+# - preface.re
 
 CHAPS:
   - amazons3.re
-  - minegishi-game.re
-  - yoshikawa-linux-security.re
-  - shiomi.re
-  - sato-xray.re
-  - hori.re
-  - iijima-amplify-pred.re
+  - amazonCloudWatch.re
+  - awsCode3.re
 
 APPENDIX:
 
