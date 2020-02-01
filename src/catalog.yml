@@ -4,6 +4,7 @@ PREDEF:
 CHAPS:
   - amazons3.re
   - dynamodb.re
+  - amazonRds.re  
   - amazonCloudWatch.re
   - awsCode3.re
 
