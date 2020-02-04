@@ -8,6 +8,7 @@ CHAPS:
   - amazonCloudWatch.re
   - amazonCloudFront.re     
   - amazonRoute53.re 
+  - amazonElastiCache.re  
   - awsCode3.re
 
 APPENDIX:
