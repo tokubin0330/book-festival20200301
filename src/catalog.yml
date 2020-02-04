@@ -6,7 +6,8 @@ CHAPS:
   - dynamodb.re
   - amazonRds.re  
   - amazonCloudWatch.re
-  - amazonCloudFront.re 
+  - amazonCloudFront.re     
+  - amazonRoute53.re 
   - awsCode3.re
 
 APPENDIX:
