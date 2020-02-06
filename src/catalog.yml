@@ -11,6 +11,7 @@ CHAPS:
   - amazonElastiCache.re
   - awsCode3.re
   - awsCm.re
+  - awsCloudTrail.re
 
 APPENDIX:
 
