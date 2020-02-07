@@ -14,6 +14,7 @@ CHAPS:
   - awsCode3.re
   - awsCm.re
   - awsCloudTrail.re
+  - amazonSQS.re 
 
 APPENDIX:
 
