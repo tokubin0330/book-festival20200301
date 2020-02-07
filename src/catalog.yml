@@ -5,7 +5,8 @@ CHAPS:
   - amazons3.re
   - dynamodb.re
   - amazonRds.re 
-  - amazonAurora.re   
+  - amazonAurora.re 
+  - amazonRedshift.re    
   - amazonCloudWatch.re
   - amazonCloudFront.re     
   - amazonRoute53.re 
