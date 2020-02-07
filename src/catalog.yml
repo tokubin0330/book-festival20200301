@@ -12,6 +12,7 @@ CHAPS:
   - amazonRoute53.re 
   - amazonElastiCache.re
   - awsCode3.re
+  - amazonApiGateway.re
   - awsCm.re
   - awsCloudTrail.re
   - amazonSQS.re 

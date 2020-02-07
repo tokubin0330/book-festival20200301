@@ -70,3 +70,13 @@ AWS CloudTrail Insights の分析では書き込み管理イベントが発生�
 ====[nonum] CloudTrail Insights
 CloudTrail Insights イベントは、分析された 100,000 の書き込み管理イベントごとに 0.35USD が請求されます。
 CloudTrail Insights が異常なアクティビティを検出すると、Insights イベントが配信されます。
+
+//embed[latex]{
+\clearpage
+//}
+
+//embed[latex]{
+\begin{tcolorbox}[title=コラム：似たようなサービス,sharp corners]
+aaa
+\end{tcolorbox}
+//}

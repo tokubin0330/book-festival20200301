@@ -58,3 +58,9 @@ Amazon RDS 暗号化を使用して実行するデータベースインスタン
 //embed[latex]{
 \clearpage
 //}
+
+//embed[latex]{
+\begin{tcolorbox}[title=コラム：似たようなサービス,sharp corners]
+aaa
+\end{tcolorbox}
+//}
