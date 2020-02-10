@@ -19,6 +19,7 @@ CHAPS:
   - awsCDK.re 
   - amazonEC2.re
   - amazonVPC.re
+  - amazonCognito.re
 
 APPENDIX:
 
