@@ -23,6 +23,7 @@ CHAPS:
   - amazonCognito.re
   - amazonSNS.re
   - amazonSES.re
+  - amazonsCloudformation.re
 
 APPENDIX:
 

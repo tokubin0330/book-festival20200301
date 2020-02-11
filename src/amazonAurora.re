@@ -30,4 +30,4 @@ Amazon Auroraは3つのアベイラビリティーゾーンにわたってユー
 
 ==[nonum] Amazon Auroraのコストは？
 
-Amazon Auroraは、使用した分のみ料金が発生し、初期費用は必要ありません。最低料金設定はありません。別途記載がない限り、以下の料金は Amazon Aurora の MySQL 互換エディションと PostgreSQL 互換エディションの両方に適用されます。
+Amazon Auroraは、使用した分のみ料金が発生し、初期費用は必要ありません。最低料金設定はありません。
