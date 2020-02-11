@@ -14,7 +14,7 @@ Amazon DynamoDB は、1日に10兆件以上のリクエストを処理するこ�
 \clearpage
 //}
 
-==[nonum] 概要
+==[nonum] どんなサービス?
 Amazon DynamoDBはNoSQLのデータベースです、その名の通りSQLを使わないデータベースになります。
 DynamoDBではデータをJSON形式で保存しています。単純にJSON形式のテキストではなくJSON形式のデータでの保存になります。この特性をドキュメント型データベースといいます。
 
