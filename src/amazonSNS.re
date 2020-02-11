@@ -27,16 +27,15 @@ Amazon SNS では複数の形式（Email、SMS、モバイルプッシュ）を�
 ==[nonum] SNS が送信するプッシュ通知の形式
 SNS が送信できるプッシュ通知の形式をご紹介します。
 
-・Webhook  
-　HTTP、HTTPS  
-・メール送信  
-　Email、Email-JSON  
-・メッセージ送信  
-　SMS   
-・AWS サービス  
-　Amazon SQS、AWS Lambda  
-・モバイル通知  
-　Amazon SNS モバイル通知  
+Webhook：　　　 HTTP、HTTPS
+
+メール送信：　　　Email、Email-JSON  
+
+メッセージ送信：　SMS
+
+AWS サービス：　 Amazon SQS、AWS Lambda  
+
+モバイル通知：　　 Amazon SNS モバイル通知  
 
 Webhook が利用できるので様々なサードパーティ製のツールと連携できます。
 例えば Slack などのチャットツールや GitHub API などと連携することで自動でチャットを送ったり
@@ -49,21 +48,20 @@ SNS は 他の AWS サービスからのイベントを SNS へ集約するこ�
 
 コンピューティング: Amazon EC2 Auto Scaling、AWS Lambda、ELB 等
 
-ストレージ: Amazon EFS、Amazon Glacier、Amazon S3 等
+ストレージ: 　　　　Amazon EFS、Amazon Glacier、Amazon S3 等
 
-データベース: Amazon DynamoDB、Amazon ElastiCache、Amazon Redshift、Amazon RDS 等
+データベース: 　　　Amazon DynamoDB、Amazon Redshift、Amazon RDS 等
 
-ネットワーク: Amazon Route 53、Amazon VPC 等
+ネットワーク: 　　　Amazon Route 53、Amazon VPC 等
 
-開発者ツール: AWS Code シリーズ
+開発者ツール: 　　　AWS Code シリーズ
 
-管理ツール: Amazon CloudWatch Alarms、Amazon CloudWatch Events、AWS CloudFormation 等
+管理ツール: 　　　　Amazon CloudWatch、AWS CloudFormation 等
 
 顧客エンゲージメント: Amazon Pinpoint、Amazon SES 等
 
-
-====[nonum] 料金
-ビルドにかかった時間とビルド用サーバのスペックで料金が変わります。
-
-■ 無料枠
+==[nonum] 料金
+料金は通知配信の種類とデータ送信量によって変わります。公式ページを参考にしてください。 
+ 
+https://aws.amazon.com/jp/sns/pricing/
 
