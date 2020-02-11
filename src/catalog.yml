@@ -21,6 +21,7 @@ CHAPS:
   - amazonVPC.re
   - amazonCognito.re
   - amazonSNS.re
+  - amazonSES.re
 
 APPENDIX:
 
