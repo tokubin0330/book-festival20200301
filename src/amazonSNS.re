@@ -2,8 +2,8 @@
 
 //embed[latex]{
 \begin{tcolorbox}[title=どんなサービス？,sharp corners]
-Amazon Simple Notification（以下 Amazon SNS）は、個別または複数のメッセージを多数の受信者に送信できるマネージドプッシュ通知サービスです。
-サーバのアラート通知からアプリのトランザクション通知などをメールやチャット、SMS など様々なシチュエーションと形式でプッシュ通知を送信することができます。
+Amazon Simple Notification Service（以下 Amazon SNS）は、個別または複数のメッセージを多数の受信者に送信できるマネージドプッシュ通知サービスです。
+アラート通知からアプリのトランザクション通知などをメールやチャット、SMS など様々なシチュエーションと形式で通知を送信することができます。
 \end{tcolorbox}
 //}
 

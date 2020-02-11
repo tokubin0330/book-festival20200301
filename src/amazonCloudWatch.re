@@ -3,7 +3,7 @@
 
 //embed[latex]{
 \begin{tcolorbox}[title=どんなサービス？,sharp corners]
-Amazon CloudWatch（以下CloudWatch）は DevOps エンジニア、SRE、ITマネージャのために構築されたシステム監視用のサービスです。
+Amazon CloudWatch（以下CloudWatch）は DevOps エンジニア、SRE、ITマネージャのためのシステム監視サービスです。
 監視項目として CPU、ディスク容量、メモリなどのリソースの使用率をログ、メトリクス、イベントという形式でデータを収集します。
 収集できる監視項目は AWS のサービスによって異なり、AWSのほとんどすべてのサービスと CloudWatch が連携できます。
 \end{tcolorbox}
