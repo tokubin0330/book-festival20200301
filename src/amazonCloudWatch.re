@@ -3,7 +3,7 @@
 
 //embed[latex]{
 \begin{tcolorbox}[title=どんなサービス？,sharp corners]
-Amazon CloudWatch は DevOps エンジニア、SRE、ITマネージャのために構築されたシステム監視用のサービスです。
+Amazon CloudWatch（以下CloudWatch）は DevOps エンジニア、SRE、ITマネージャのために構築されたシステム監視用のサービスです。
 監視項目として CPU、ディスク容量、メモリなどのリソースの使用率をログ、メトリクス、イベントという形式でデータを収集します。
 収集できる監視項目は AWS のサービスによって異なり、AWSのほとんどすべてのサービスと CloudWatch が連携できます。
 \end{tcolorbox}
@@ -23,9 +23,9 @@ Amazon CloudWatch は DevOps エンジニア、SRE、ITマネージャのため�
 
 
 ==[nonum] どんな時に使うの?
-===[nonum] Amazon CloudWatch の3つの特徴
+===[nonum] CloudWatch の3つの特徴
 
-Amazon CloudWatch のが解決する課題は監視だけではありません。
+CloudWatch が解決する課題は監視だけではありません。
 AWS のクラウドを使っているからこそ出来る AWS サービスとの連携が一番の CloudWatch の特徴です。
 ここでは 監視、運用、最適化の観点から 3 つの特徴を見てみましょう。
 
@@ -45,7 +45,7 @@ CloudWatch アラームは、しきい値や機械学習アルゴリズムによ
 アラームがトリガーされると、自動でインスタンスの停止や再起動、 EC2 AutoScaling の有効化が出来るため、
 リソース配置の自動化が可能になります。
 
-==[nonum] Amazon CloudWatch のコストは？
+==[nonum] CloudWatch のコストは？
 CloudWatch では従量課金制の料金体制になっています。
 無料枠もあるので参考にしてみてください。
 

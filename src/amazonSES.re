@@ -1,8 +1,8 @@
-= Amazon Simple Notification Service
+= Amazon Simple Email Service
 
 //embed[latex]{
 \begin{tcolorbox}[title=どんなサービス？,sharp corners]
-Amazon Simple Notification（以下 Amazon SNS）は、個別または複数のメッセージを多数の受信者に送信できるマネージドプッシュ通知サービスです。
+SNSはAmazon Simple Notification は、個別または複数のメッセージを多数の受信者に送信できるマネージドプッシュ通知サービスです。
 サーバのアラート通知からアプリのトランザクション通知などをメールやチャット、SMS など様々なシチュエーションと形式でプッシュ通知を送信することができます。
 \end{tcolorbox}
 //}
@@ -23,8 +23,8 @@ Amazon SNS は様々なシチュエーションに対応したプッシュ通知
 Amazon SNS では複数の形式（Email、SMS、モバイルプッシュ）を使用するエンドユーザに対して一括送信ができます。
 
 
-==[nonum] Amazon SNS が送信するプッシュ通知の形式
-Amazon SNS が送信できるプッシュ通知の形式をご紹介します。
+==[nonum] SNS が送信するプッシュ通知の形式
+SNS が送信できるプッシュ通知の形式をご紹介します。
 
 Webhook：　　　 HTTP、HTTPS
 
@@ -40,10 +40,10 @@ Webhook が利用できるので様々なサードパーティ製のツールと
 例えば Slack などのチャットツールや GitHub API などと連携することで自動でチャットを送ったり
 GitHub の Issue を作成するなどの連携ができます。
 
-==[nonum] Amazon SNS が受信するイベントソース
-Amazon SNS は 他の AWS サービスからのイベントを Amazon  SNS へ集約することができます。
+==[nonum] SNS が受信するイベントソース
+SNS は 他の AWS サービスからのイベントを SNS へ集約することができます。
 これによってイベント駆動型の自動ワークフローを実行することができます。
-ここでは Amazon SNS と連携できる送信元となるサービスをご紹介します。
+ここでは SNS と連携できる送信元となるサービスをご紹介します。
 
 コンピューティング: Amazon EC2 Auto Scaling、AWS Lambda、ELB 等
 
@@ -64,5 +64,5 @@ Amazon SNS は 他の AWS サービスからのイベントを Amazon  SNS へ�
 また、大きな特徴として Lambda と連携ができるので自動化のワークフローを実現できます。
 
 例えば、他の AWS サービスのイベント（アラートやS3のオブジェクト変更、AutoScalingイベント、ブラックリストからのアクセスなど）
-を Amazon SNS で受信しそれをトリガーに Lambda を実行することで更に別のワークフローを実行できます。
+を SNS で受信しそれをトリガーに Lambda を実行することで更に別のワークフローを実行できます。
 
