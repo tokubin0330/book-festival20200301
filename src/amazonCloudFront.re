@@ -60,7 +60,7 @@ Amazon CloudFrontは、ネットワークレベルとアプリケーションレ
 トラフィックとアプリケーションは、AWS Shield標準のようなさまざまな組み込み保護機能を追加費用なしで利用できます。
 また、AWS Certificate Manager（ACM）といった設定可能な機能を使用して、追加コストなしでカスタムSSL証明書を作成、管理することもできます。
 
-==[nonum] Amazon CloudFrontとAmazon Route 53
+==[nonum] ユースケース
 AWS の正式な DNS サービスである Amazon Route 53 を使用すると、「エイリアス」レコードを構成できます。
 このレコードによって、DNS 名の apex またはルート（example.com）を Amazon CloudFront ディストリビューションにマッピングできます。
 Amazon Route 53 は、CloudFront ディストリビューション用に正しい IP アドレスが設定されたエイリアスレコードの各リクエストに応答します。
