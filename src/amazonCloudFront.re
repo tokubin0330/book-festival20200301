@@ -14,7 +14,7 @@ CloudFront ではエッジロケーションと呼ばれるデータセンター
 \clearpage
 //}
 
-==[nonum] 概要
+==[nonum] どんなサービス？
 Amazon CloudFrontは、データ、動画、アプリケーション、および API をすべて開発者にとって使いやすい環境で、低レイテンシーの高速転送により世界中の視聴者に安全に配信する高速コンテンツ配信ネットワーク (CDN) サービスです。
 
 ==[nonum] どんな時に使うの?
@@ -73,4 +73,4 @@ Route 53 では、CloudFront ディストリビューションにマッピング
 
 ==[nonum] Amazon CloudFrontのコストは?
 Amazon CloudFront の料金は、データ転送（アウト）、HTTP/HTTPS リクエスト、無効リクエスト、および CloudFront ディストリビューションに関連付けられた専用 IP 独自 SSL 証明書という 4 つの領域での実際のサービス使用状況に基づいて請求されます。
-AWS 無料利用枠を使うと、Amazon CloudFront を無料で開始していただけます。サインアップしていただくと、AWS の新規お客様は、Amazon CloudFront において 50GB のデータ送信（アウト）と 2,000,000 件の HTTP および HTTPS リクエストを毎月 1 年間ご利用いただけます。
+AWS 無料利用枠を使うと、Amazon CloudFrontを無料で開始する事ができます。
