@@ -1,5 +1,5 @@
 = Amazon CloudWatch
-サービス:監視  対象:SRE、インフラ 区分:DevOps
+キーワード:監視/運用/ログ/分析/DevOps
 
 //embed[latex]{
 \begin{tcolorbox}[title=どんなサービス？,sharp corners]
