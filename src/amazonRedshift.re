@@ -15,7 +15,7 @@ Amazon Redshiftとは、AWSが提供するクラウド型データウェアハ�
 //}
 
 
-==[nonum] 概要
+==[nonum] どんなサービス？
 Amazon Redshiftは、データウェアハウスを設定、操作、および拡張するためのすべての作業を管理します。
 これらのタスクには、クラスターの容量のプロビジョニング、モニタリング、およびバックアップのほか、Amazon Redshiftエンジンへのパッチおよびアップグレードの適用が含まれます。
 
@@ -33,7 +33,7 @@ Amazon Redshift は、他のどのデータウェアハウスを運用するよ�
 
 Amazon Redshiftは従来のデータウェアハウス構築と比較すると、年間費用で10倍～1000倍近くのコストダウンを見込む事ができます。
 
-==[nonum] Amazon Redshiftのユースケースは？
+==[nonum] どんな時に使うの？
 
 Amazon Redshift を使用すると、Apache Parquet のようなオープンフォーマットでクエリの結果をS3データレイクに保存することも簡単です。
 そうすることで、Amazon EMR、Amazon Athena、Amazon SageMakerといった他の分析サービスを使ってさらに分析を実施できます。

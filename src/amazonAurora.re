@@ -15,7 +15,7 @@ Amazon Aurora は、MySQL および PostgreSQL と互換性のあるクラウド
 //}
 
 
-==[nonum] 概要
+==[nonum] どんなサービス？
 Amazon Auroraとはクラウドネイティブなリレーショナルデータベースエンジンです。高性能でMySQLの最大で5倍、PostgreSQLの2倍のスループットを実現する事ができます。
 
 Amazon AuroraとAmazon RDSの違いは、Amazon RDSはMySQL、PostgreSQL、MariaDB、Orable、SQL Serverを使えるのに対してAmazon Auroraが互換性を持つのはMySQLとPostgreSQLのみです。

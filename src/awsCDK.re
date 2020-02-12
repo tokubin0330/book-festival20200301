@@ -13,7 +13,7 @@ AWS クラウド開発キット (AWS CDK) は、最新のプログラミング�
 \clearpage
 //}
 
-==[nonum] AWS CDKはどのように機能するか
+==[nonum] どんな時に使うの？
 CloudFormation テンプレートを生成するために実行される AWS CDK プロジェクトを、AWS CDK フレームワークを使用して作成します。
 AWS CDK プロジェクトは、AWS CDK コマンドラインを使用して、または継続的デリバリーシステムで実行できます。
 

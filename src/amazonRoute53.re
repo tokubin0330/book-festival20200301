@@ -14,7 +14,7 @@ Amazon Route53ではドメイン名登録も提供します。example.comのよ�
 \clearpage
 //}
 
-==[nonum] 概要
+==[nonum] どんなサービス？
 Amazon Route53 は、AWSの他の機能やサービスと連動するように設計されています。
 Amazon Route53 を使用して、Amazon EC2 インスタンス、Amazon S3 バケット、Amazon CloudFront ディストリビューションおよびその他の AWS リソースとドメイン名をマッピングできます。
 AWS Identity and Access Management (IAM) サービスと Amazon Route53 を組み合わせることで、DNS データを更新するユーザーをきめ細かく管理できます。

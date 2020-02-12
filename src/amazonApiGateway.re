@@ -15,11 +15,11 @@ Amazon API Gateway は、数回クリックするだけで、簡単に API の�
 //}
 
 
-==[nonum] 概要
+==[nonum] どんなサービス？
 Amazon API Gateway は、あらゆる規模の REST および WebSocket API を作成、公開、保守、モニタリング、および保護するためのAWSサービスです。
 API開発者は、AWSまたは他のウェブサービス、AWSクラウドに保存されているデータにアクセスするAPIを作成できます。
 
-==[nonum] Amazon API Gatewayのユースケース
+==[nonum] どんな時に使うの？
 
 Amazon API Gatewayは、以下のようなREST APIを作成する事ができます。
 
