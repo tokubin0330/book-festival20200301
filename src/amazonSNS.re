@@ -1,5 +1,5 @@
 = Amazon Simple Notification Service
-
+キーワード：通知/プッシュ通知/運用/自動化
 //embed[latex]{
 \begin{tcolorbox}[title=どんなサービス？,sharp corners]
 Amazon Simple Notification Service（以下 Amazon SNS）は、個別または複数のメッセージを多数の受信者に送信できるマネージドプッシュ通知サービスです。
@@ -41,7 +41,7 @@ Webhook が利用できるので様々なサードパーティ製のツールと
 GitHub の Issue を作成するなどの連携ができます。
 
 ==[nonum] Amazon SNS が受信するイベントソース
-Amazon SNS は 他の AWS サービスからのイベントを Amazon  SNS へ集約することができます。
+Amazon SNS は 他の AWS サービスからのイベントを Amazon SNS へ集約することができます。
 これによってイベント駆動型の自動ワークフローを実行することができます。
 ここでは Amazon SNS と連携できる送信元となるサービスをご紹介します。
 
