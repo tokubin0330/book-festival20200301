@@ -4,22 +4,23 @@ PREDEF:
 CHAPS:
   - amazons3.re
   - dynamodb.re
-  - amazonRds.re 
-  - amazonAurora.re 
-  - amazonRedshift.re    
+  - amazonRds.re
+  - amazonAurora.re
+  - amazonRedshift.re
   - amazonCloudWatch.re
-  - amazonCloudFront.re     
-  - amazonRoute53.re 
+  - amazonCloudFront.re
+  - amazonRoute53.re
   - amazonElastiCache.re
   - awsCode3.re
   - awsLambda.re
   - amazonApiGateway.re
   - awsCm.re
   - awsCloudTrail.re
-  - amazonSQS.re 
-  - awsCDK.re 
+  - amazonSQS.re
+  - awsCDK.re
   - amazonEC2.re
   - amazonVPC.re
+  - amazonECS.re
   - amazonCognito.re
   - amazonSNS.re
   - amazonSES.re
