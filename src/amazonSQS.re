@@ -13,7 +13,7 @@ Amazon SQSとはAmazon Simple Queue Serviceの略になります。完全マネ�
 \clearpage
 //}
 
-==[nonum] どんなサービス？
+==[nonum] 機能
 Amazon SQSはメッセージキュー（MQ）のマネージドサービスです。
 アプリケーションの間でメッセージをキューイングする事によって、疎結合なアーキテクチャを実現します。
 

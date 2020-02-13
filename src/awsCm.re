@@ -14,8 +14,8 @@ AWS Certificate ManagerはAWSベースのウェブサイトとアプリケーシ
 \clearpage
 //}
 
-==[nonum] どんなサービス？
-AWS Certificate ManagerはAWSが発行したSSL証明書の事です。AWS Certificate Managerを使用して、Elastic Load Balancing、Amazon CloudFront、Amazon API Gateway、AWS Elastic Beanstalk等で使用する証明書をプロビジョニングする事ができます。
+==[nonum] どんな時に使うの？
+AWS Certificate Managerを使用して、Elastic Load Balancing、Amazon CloudFront、Amazon API Gateway、AWS Elastic Beanstalk等で使用する証明書をプロビジョニングする事ができます。
 
 ==[nonum] AWS Certificate Managerのメリット
 AWS Certificate Managerでは、Elastic Load BalancingやAPI GatewayなどのACM統合サービスで使用する、パブリックやプライベートの SSL/TLS 証明書のプロビジョニングについて、追加料金はかかりません。

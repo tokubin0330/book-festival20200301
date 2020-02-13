@@ -15,9 +15,7 @@ Amazon Aurora は、MySQL および PostgreSQL と互換性のあるクラウド
 //}
 
 
-==[nonum] どんなサービス？
-Amazon Auroraとはクラウドネイティブなリレーショナルデータベースエンジンです。高性能でMySQLの最大で5倍、PostgreSQLの2倍のスループットを実現する事ができます。
-
+==[nonum] 機能
 Amazon AuroraとAmazon RDSの違いは、Amazon RDSはMySQL、PostgreSQL、MariaDB、Orable、SQL Serverを使えるのに対してAmazon Auroraが互換性を持つのはMySQLとPostgreSQLのみです。
 
 また、仮にMySQLやPostgreSQLを使う場合でも、使えるメジャーバージョンがRDSとAuroraでは異なります。
@@ -27,6 +25,13 @@ Amazon Auroraは3つのアベイラビリティーゾーンにわたってユー
 
 物理ストレージの障害は透過的に復旧され、インスタンスのフェイルオーバーは通常30秒未満で完了します。
 
+==[nonum] どんな時に使うの？
+Amazon Auroraは大規模なクエリデータの処理を行なう時に大変向いています。
+
+==[nonum] Amazon Aurora Serverlessについて
+Amazon Aurora Serverlessは、AWSが2018年にサービス提供を開始したAmazon Auroraの新しいデプロイオプションになります。
+
+データベースインスタンスやクラスタを管理することなく、クラウド内でデータベースを実行する事ができます。
 
 ==[nonum] Amazon Auroraのコストは？
 
