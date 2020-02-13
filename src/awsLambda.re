@@ -1,5 +1,5 @@
 = AWS Lambda
-
+キーワード：/サーバレス/自動化/コード実行
 //embed[latex]{
 \begin{tcolorbox}[title=どんなサービス？,sharp corners]
 AWS Lambda（以下 Lambda）は、サーバ管理が不要なコードを実行するサービスです。
