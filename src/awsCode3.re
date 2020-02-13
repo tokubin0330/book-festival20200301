@@ -82,11 +82,6 @@ general1.large(メモリ：15 GB VCPU：8）1分あたり	0.02  USD
 #@# https://aws.amazon.com/jp/codebuild/pricing/
 
 
-//embed[latex]{
-\clearpage
-//}
-
-
 ===[nonum] CodeDeploy 
 
 CodeDeploy は AWS EC2、ECS、Fargate、Lamabda などの様々なコンピューティング
