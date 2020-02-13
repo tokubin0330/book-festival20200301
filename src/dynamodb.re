@@ -35,4 +35,7 @@ Amazon DynamoDBテーブルのデータは、コンソールをワンクリッ�
 ==[nonum] Amazon DynamoDB のコストは？
 Amazon DynamoDBでは、Amazon DynamoDB テーブル内のデータの読み取り、書き込み、保存に加え、ユーザーが有効化したオプション機能が課金の対象となります。
 
+==[nonum] Amazon DynamoDB のTTL機能
+Amazon DynamoDBのTTL（Time to Live）機能は、レコード毎にデータの有効期限を指定をする事によって、その有効期限を過ぎるとデータが自動削除されるという機能になります。
 
+この機能を利用する事によって、日々がデータがストアされるようなアプリケーションを実装する時に不要になったデータをテーブルから削除する事ができます。

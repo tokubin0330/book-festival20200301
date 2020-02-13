@@ -14,9 +14,6 @@ CloudFront ではエッジロケーションと呼ばれるデータセンター
 \clearpage
 //}
 
-==[nonum] どんなサービス？
-Amazon CloudFrontは、データ、動画、アプリケーション、および API をすべて開発者にとって使いやすい環境で、低レイテンシーの高速転送により世界中の視聴者に安全に配信する高速コンテンツ配信ネットワーク (CDN) サービスです。
-
 ==[nonum] どんな時に使うの?
 
 ・Amazon CloudFrontを使用することで、AWSバックボーンネットワークおよびAmazon CloudFrontエッジサーバーの利点を活用して、ウェブサイトを閲覧するビューワーに高速で、安全で、信頼性の高いエクスペリエンスを提供できます。
@@ -66,10 +63,6 @@ AWS の正式な DNS サービスである Amazon Route 53 を使用すると、
 Amazon Route 53 は、CloudFront ディストリビューション用に正しい IP アドレスが設定されたエイリアスレコードの各リクエストに応答します。
 Route 53 では、CloudFront ディストリビューションにマッピングされているエイリアスレコードへのクエリは課金されません。
 このようなクエリは、Amazon Route 53 の使用状況レポートに「Intra-AWS-DNS-Queries」として記載されます。
-
-//embed[latex]{
-\clearpage
-//}
 
 ==[nonum] Amazon CloudFrontのコストは?
 Amazon CloudFront の料金は、データ転送（アウト）、HTTP/HTTPS リクエスト、無効リクエスト、および CloudFront ディストリビューションに関連付けられた専用 IP 独自 SSL 証明書という 4 つの領域での実際のサービス使用状況に基づいて請求されます。
