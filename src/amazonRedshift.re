@@ -1,9 +1,8 @@
 = Amazon Redshift
-
+キーワード：データウェアハウス/列志向/スナップショット
 //embed[latex]{
 \begin{tcolorbox}[colframe=black,colback=white,colbacktitle=black,coltitle=white,coltext=black,title=どんなサービス？,sharp corners]
 Amazon Redshiftとは、AWSが提供するクラウド型データウェアハウス(DWH)サービスです。数百ギガバイトのデータから開始して、ペタバイト以上まで拡張できます。
-これにより、お客様のビジネスと顧客のために新しい洞察を得る目的でデータを使用できるようになります。
 \end{tcolorbox}
 //}
 

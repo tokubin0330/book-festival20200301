@@ -1,5 +1,5 @@
 = Amazon DynamoDB
-キーワード：NoSQL/キーバリュー型/JSON/ドキュメント型データベース
+キーワード：NoSQL/キーバリュー型/JSON/ドキュメント型データベース/IoT向け
 //embed[latex]{
 \begin{tcolorbox}[colframe=black,colback=white,colbacktitle=black,coltitle=white,coltext=black,title=どんなサービス？,sharp corners]
 Amazon DynamoDBはマネージド型のNoSQLデータベースになります。Amazon DynamoDB は、規模に関係なく数ミリ秒台のパフォーマンスを実現する事ができます。
