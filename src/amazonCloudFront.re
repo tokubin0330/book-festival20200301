@@ -1,5 +1,5 @@
 = Amazon CloudFront
-
+キーワード：CDNサービス/キャッシュ/ストリーミング配信/高速化
 //embed[latex]{
 \begin{tcolorbox}[colframe=black,colback=white,colbacktitle=black,coltitle=white,coltext=black,title=どんなサービス？,sharp corners]
 Amazon CloudFrontとは、ユーザーへの静的および動的ウェブコンテンツ (.html、.css、.js、イメージファイルなど) の配信を高速化するウェブサービスです。
