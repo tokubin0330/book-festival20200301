@@ -8,7 +8,7 @@ S3は容量の制限はありません。ただし1つのファイルサイズ�
 \end{tcolorbox}
 //}
 
-//image[sample1][][scale=0.95]{
+//image[S3][][scale=0.95]{
 //}
 
 
