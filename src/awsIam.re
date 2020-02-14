@@ -1,4 +1,4 @@
-= AWS Identity and Access Management
+= AWS IAM
 キーワード：/ユーザ管理/アクセス権限
 
 //embed[latex]{

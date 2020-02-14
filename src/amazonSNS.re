@@ -1,4 +1,4 @@
-= Amazon Simple Notification Service
+= Amazon SNS
 キーワード：通知/プッシュ通知/運用/自動化
 //embed[latex]{
 \begin{tcolorbox}[title=どんなサービス？,sharp corners]
