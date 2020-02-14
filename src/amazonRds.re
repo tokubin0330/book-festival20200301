@@ -1,5 +1,5 @@
 = Amazon RDS
-
+キーワード：マネージド型/リードレプリカ/自動バックアップ
 //embed[latex]{
 \begin{tcolorbox}[colframe=black,colback=white,colbacktitle=black,coltitle=white,coltext=black,title=どんなサービス？,sharp corners]
 Amazon RDSとはAmazon Relational Database Serviceの略で、分散リレーショナルデータベースサービスになります。
@@ -15,7 +15,7 @@ Amazon RDSは、Amazon Aurora、PostgreSQL、MySQL、MariaDB、Oracle データ�
 //}
 
 ==[nonum] 自動バックアップと復元
-RDS では、お客様の DB インスタンスの自動バックアップはデフォルトで Amazon S3 に作成され、指定した期間安全に保存されます。
+RDS では、DB インスタンスの自動バックアップはデフォルトで Amazon S3 に作成され、指定した期間安全に保存されます。
 このバックアップは、ユーザーが設定可能な30分間隔の時間に1日1回行われます。
 
 ==[nonum] RDSのコストは？
