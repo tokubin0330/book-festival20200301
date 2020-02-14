@@ -27,8 +27,8 @@ https://github.com/awslabs/aws-cdk
 
 ==[nonum] AWS CDKのコストは？
 
-AWS CDK に対する追加料金はありません。AWS CDK を使用して作成した AWS リソース (Amazon EC2 インスタンス、Elastic Load Balancing ロードバランサーなど) に対して、手動で作成したのと同じように料金をお支払いいただきます。
-お支払いはお客様が実際に使用した分だけです。最低料金や前払いの義務は発生しません。
+AWS CDK に対する追加料金はありません。AWS CDK を使用して作成した AWS リソース (Amazon EC2 インスタンス、Elastic Load Balancing ロードバランサーなど) に対して、手動で作成したのと同じように料金が発生します。
+コストは実際に使用した分だけです。最低料金や前払いの義務は発生しません。
 
 ==[nonum] AWS CDK CLIについて
 

@@ -14,7 +14,6 @@ CHAPS:
   - awsCode3.re
   - awsLambda.re
   - amazonApiGateway.re
-  - awsCm.re
   - awsCloudTrail.re
   - amazonSQS.re
   - awsCDK.re
