@@ -1,5 +1,5 @@
 = Amazon Route53
-
+キーワード：DNSサービス/ルーティングポリシー/高可用性
 //embed[latex]{
 \begin{tcolorbox}[colframe=black,colback=white,colbacktitle=black,coltitle=white,coltext=black,title=どんなサービス？,sharp corners]
 Amazon Route53は、可用性と拡張性に優れたクラウドのドメインネームシステム (DNS) ウェブサービスです。

@@ -26,7 +26,7 @@ Amazon Auroraは3つのアベイラビリティーゾーンにわたってユー
 物理ストレージの障害は透過的に復旧され、インスタンスのフェイルオーバーは通常30秒未満で完了します。
 
 ==[nonum] どんな時に使うの？
-Amazon Auroraは大規模なクエリデータの処理を行なう時に大変向いています。
+Amazon Auroraはインスタンスとストレージが別れていて、トラフィック効率が良く、高トラフィックで並列性が要求されるクエリにも向いているDBになります。
 
 ==[nonum] Amazon Aurora Serverlessについて
 Amazon Aurora Serverlessは、AWSが2018年にサービス提供を開始したAmazon Auroraの新しいデプロイオプションになります。
