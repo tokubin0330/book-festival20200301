@@ -34,6 +34,5 @@ Amazon Redshift は、他のどのデータウェアハウスを運用するよ�
 Amazon Redshiftは従来のデータウェアハウス構築と比較すると、年間費用で10倍～1000倍近くのコストダウンを見込む事ができます。
 
 ==[nonum] どんな時に使うの？
-
-Amazon Redshift を使用すると、Apache Parquet のようなオープンフォーマットでクエリの結果をS3データレイクに保存することも簡単です。
-そうすることで、Amazon EMR、Amazon Athena、Amazon SageMakerといった他の分析サービスを使ってさらに分析を実施できます。
+Amazon Redshiftは大量データの保持、データウェアハウス、BIツールなどの分析に向いています。
+Amazon Redshiftは列指向のアーキテクチャになっているため、データの集計・分析に大変向いています。
